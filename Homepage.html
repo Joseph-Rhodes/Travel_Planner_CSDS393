@@ -12,7 +12,8 @@
     
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Dancing Script">
 </head>
-<body>
+<body class="mainBg">
+    
     <div id="header">
             <div class="container">
                 <nav>
@@ -26,21 +27,7 @@
                 
             </div> 
         </div>
-     <div>
-        <div class="container">
-        <ul yes this is what is happening>
-            <li><a href="Homepage.html">Home</a></li>
-            <li><a href="Itinerary.html">Plan a Trip</a></li>
-            <li><a href="Media.html">Media</a></li>
-            <li><button class="btnLogin-popup">Login</button></li>
-        </ul>
-    </div>
-     </div>   
-    
-    
-    
-    
-    
+
 </body>
 
 
@@ -83,7 +70,7 @@
     
     nav ul li a{
         font-family: 'Courier New', Courier, monospace;
-        color: #000000;
+        color: white;
         text-decoration: none;
         font-size: 20px;
         position: relative;
@@ -109,6 +96,16 @@
         margin-left: 5%;
         font-size: 100px;
     }
+
+    .mainBg{
+        display: flex;
+        flex-direction: column; 
+        height: 100vh;
+        background-image: url('./src/images/polaroidCollage.png');
+        background-size: cover;
+    }
+
+
     
 
 
