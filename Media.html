@@ -25,11 +25,57 @@
                 
             </div> 
         </div>
+        <div class="row">
+            <div class="container">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="exampleFormControlTextarea1">Talk about your trip!</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" rows="19"></textarea>
+                        
+                    </div>
+                </div>
+            <div class="col-md-6">
+                            <div class="d-flex justify-content-center">
+                                <div class="text-center">
+                                <img class="mainIcon1" src="./src/images/polaroidStock.jpg" class="img-fluid" alt="Responsive image">
+                                    
+                                        <div class="img-overlay">
+                                            <div class="btn btn-primary btn-rounded btn-xs">
+                                                <label class="form-label text-white m-1" for="customFile1">Choose a picture</label>
+                                                <input type="file" class="form-control d-none" id="customFile1" onchange="displaySelectedImage(event, 'selectedImage')" />
+                                        </div>
+                                    </div>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
         
-    
-    
-    
-    
+        <div class="row">
+            <div class="container">
+                <div class="col-md-6">
+                    <div class="d-flex justify-content-center">
+                        <div class="text-center">
+                        <img class="mainIcon1" src="./src/images/polaroidStock.jpg" class="img-fluid" alt="Responsive image">
+                            
+                                <div class="img-overlay">
+                                    <div class="btn btn-primary btn-rounded btn-xs">
+                                        <label class="form-label text-white m-1" for="customFile1">Choose a picture</label>
+                                        <input type="file" class="form-control d-none" id="customFile1" onchange="displaySelectedImage(event, 'selectedImage')" />
+                                </div>
+                            </div>
+                        </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="exampleFormControlTextarea1">Talk about your trip!</label>
+                            <textarea class="form-control" id="exampleFormControlTextarea1" rows="19"></textarea>
+                            
+                        </div>
+                    </div>
+            </div>
+        </div>
 </body>
 
 
@@ -98,6 +144,33 @@
         margin-left: 5%;
         font-size: 100px;
     }
+    .vcenter {
+    display: flex;
+    vertical-align: middle;
+    position: absolute;
+    left: 45%;
+    top: 45%;
+    }
+
+    .mainIcon1{
+        border-radius: 12px;
+        font-size: 30px;
+        background-position: center;
+        background-repeat: no-repeat;
+        text-align: center;
+        max-width: 70%;
+    }
+
+    .img-overlay{
+        position: absolute;
+  top: 77%;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  text-align: center;
+    }
+    
+
     
 
 
