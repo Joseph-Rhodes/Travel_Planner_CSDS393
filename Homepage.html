@@ -4,29 +4,28 @@
 <script type="text/javascript" src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js'></script>
 <head>
     <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Travel Planner</title>
-    <script src="https://kit.fontawesome.com/d7a13eafa2.js" crossorigin="anonymous"></script>
-    
-    
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Dancing Script">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
-<body class="mainBg">
-    
+<body>
     <div id="header">
-            <div class="container">
-                <nav>
-                    <ul>
-                        <li><a href="Homepage.html">Home</a></li>
-                        <li><a href="Itinerary.html">Plan a Trip</a></li>
-                        <li><a href="Media.html">Media</a></li>
-                        <li><button class="btnLogin-popup">Login</button></li>
-                    </ul>
-                </nav>
-                
-            </div> 
-        </div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" style="opacity: 0.75;">
+            <a class="navbar-brand" style="font-size: 30px;" href="Homepage.html">MemMapper</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+                  <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <button class="nav-link" href="#">Login</button>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    </div>
 
 <div class="wrapper">
                 <span class="icon-close"><ion-icon name="close"></ion-icon></span>
@@ -89,11 +88,13 @@
                 </div>
             </div>
 
-
-
-    
+    <div class="container">
+        <nav>
+            <a class="mainIcon1" href="Itinerary.html">Plan a Trip</a>
+            <a class="mainIcon2" href="Media.html">Media</a>
+        </nav>
+    </div> 
 </body>
-
 
 </html>
 
@@ -106,13 +107,13 @@
     }
     
     body{
-        background: #ffffff;
-        color: #000000;
+        background-image: url('./src/images/polaroidCollage.png');
     }
     
     .container{
         padding:  10px, 10%;
         margin-left: auto;
+        position: relative;
     }
     
     nav{
@@ -120,27 +121,15 @@
         align-items: center;
         justify-content: end;
         flex-wrap: wrap; 
-    }
-    
-    .logo{
-        width: 140px;
-    }
-    
-    nav ul li{
-        display: inline-block;
-        list-style: none;
-        margin: 10px 10px;
-    }
-    
-    nav ul li a{
-        font-family: 'Courier New', Courier, monospace;
-        color: white;
-        text-decoration: none;
-        font-size: 20px;
         position: relative;
     }
     
-    nav ul li a::after{
+    nav a{
+        color: rgb(0, 149, 255);
+    }
+    
+    
+    nav a::after{
         content: '';
         width: 0;
         height: 2px;
@@ -151,7 +140,7 @@
         transition: 0.5s;
     }
     
-    nav ul li a:hover::after{
+    nav a:hover::after{
         width: 100%;
     }
     
@@ -161,15 +150,35 @@
         font-size: 100px;
     }
 
-    .mainBg{
-        display: flex;
-        flex-direction: column; 
-        height: 100vh;
-        background-image: url('./src/images/polaroidCollage.png');
-        background-size: cover;
+    .mainIcon1{
+        border-radius: 12px;
+        padding: 175px 175px;
+        font-size: 30px;
+        background-color: rgba(213, 210, 210, 0.75);
+        margin-top: 275px;
+        position: absolute;
+        top: 50%;
+        left: 0%;
+        background-image: url('./src/images/itinerary.png');
+        background-size: 400px 400px;
+        background-position: center;
+        background-repeat: no-repeat;
     }
 
-
+    .mainIcon2{
+        border-radius: 12px;
+        padding: 175px 175px;
+        font-size: 30px;
+        background-color: rgba(213, 210, 210, 0.75);
+        margin-top: 275px;
+        position: absolute;
+        top: 50%;
+        left: 55%;
+        background-image: url('./src/images/media.png');
+        background-size: 300px 300px;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
 
 /* Everything below is for the login/register */
 
