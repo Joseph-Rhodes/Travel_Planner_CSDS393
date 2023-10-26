@@ -1,5 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
+<link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css'>
+<script type="text/javascript" src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js'></script>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,14 +9,11 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>    
-    
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </head>
 <body>
-    
-    
-    <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <a class="navbar-brand" href="#">Mem Mapper??</a>
+   <nav class="navbar navbar-expand-lg navbar-light bg-light" style="opacity: 0.75;">
+        <a class="navbar-brand" style="font-size: 30px;" href="Homepage.html">MemMapper: For mapping your best memories.</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
@@ -26,59 +25,66 @@
             </ul>
         </div>
     </nav>
-    
-    <div class="wrapper">
-        <span class="icon-close"><ion-icon name="close"></ion-icon></span>
+
+    <div class="container">
+        <nav>
+            <a class="mainIcon1" href="Itinerary.html">Plan a Trip</a>
+            <a class="mainIcon2" href="Media.html">Media</a>
+        </nav>
+    </div> 
+
+            <dialog id="modal" class="wrapper">
+                <span class="icon-close"><ion-icon name="close"></ion-icon></span>
         
-        <!-- ----------------      Login    ----------------  -->
-        <div class="form-box login">
-            <h2>Login</h2>
-            <form action="#">
-                <div class="input-box">
-                    <span class="icon"><ion-icon name="mail"></ion-icon></span>
-                    <input type="email" id="email" name="email" required>
-                    <label>Email</label>
+                <!-- ----------------      Login    ----------------  -->
+                <div class="form-box login">
+                    <h2>Login</h2>
+                    <form action="" method="post">
+                        <div class="input-box">
+                            <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                            <input type="email" id="email" name="email" required>
+                            <label>Email</label>
+                        </div>
+                        <div class="input-box">
+                            <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                            <input type="password" id="password" name="password" required>
+                            <label>Password</label>
+                        </div>
+                        <div class="remember-forgot">
+                            <label><input type="checkbox">
+                            Remember me</label>
+                            <a href="#">Forgot Password?</a>
+                        </div>
+                        <button type="submit" class="btn">Login</button>
+                        <div class="login-register">
+                            <p>Don't have an account? <a href="#" class="register-link">Register</a></p>
+                        </div>
+                    </form>
                 </div>
-                <div class="input-box">
-                    <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
-                    <input type="password" id="password" name="password" required>
-                    <label>Password</label>
-                </div>
-                <div class="remember-forgot">
-                    <label><input type="checkbox">
-                        Remember me</label>
-                        <a href="#">Forgot Password?</a>
-                    </div>
-                    <button type="submit" class="btn">Login</button>
-                    <div class="login-register">
-                        <p>Don't have an account? <a href="#" class="register-link">Register</a></p>
-                    </div>
-                </form>
-            </div>
-            
-            <!-- ----------------      Register    ----------------  -->
-            <div class="form-box register">
-                <h2>Registration</h2>
-                <form action="" method="post" novalidate>
-                    <div class="input-box">
-                        <span class="icon"><ion-icon name="person"></ion-icon></span>
-                        <input type="username" id="username" name="username" required>
-                        <label>Username</label>
-                    </div>
-                    <div class="input-box">
-                        <span class="icon"><ion-icon name="mail"></ion-icon></span>
-                        <input type="email" id="email" name="email" required>
-                        <label>Email</label>
-                    </div>
-                    <div class="input-box">
-                        <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
-                        <input type="password" id="password" name="password" required>
-                        <label>Password</label>
-                    </div>
-                    <div class="remember-forgot">
-                        <label><input type="checkbox">
+        
+        <!-- ----------------      Register    ----------------  -->
+                <div class="form-box register">
+                    <h2>Registration</h2>
+                    <form action="" method="post" novalidate>
+                        <div class="input-box">
+                            <span class="icon"><ion-icon name="person"></ion-icon></span>
+                            <input type="username" id="username" name="username" required>
+                            <label>Username</label>
+                        </div>
+                        <div class="input-box">
+                            <span class="icon"><ion-icon name="mail"></ion-icon></span>
+                            <input type="email" id="email" name="email" required>
+                            <label>Email</label>
+                        </div>
+                        <div class="input-box">
+                            <span class="icon"><ion-icon name="lock-closed"></ion-icon></span>
+                            <input type="password" id="password" name="password" required>
+                            <label>Password</label>
+                        </div>
+                        <div class="remember-forgot">
+                            <label><input type="checkbox">
                             I agree to the terms & conditions</label>
-                            
+            
                         </div>
                         <button type="submit" class="btn">Register</button>
                         <div class="login-register">
@@ -86,284 +92,305 @@
                         </div>
                     </form>
                 </div>
-            </div> 
-            
-            
-            <div class="container">
-                <nav>
-                    <a class="mainIcon1" href="Itinerary.html">Plan a Trip</a>
-                    <a class="mainIcon2" href="Media.html">Media</a>
-                </nav>
-            </div> 
-            
-            <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-            <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-            
-            
-            
-            
-        </body>
-        </html>
-        
-        
-        <style>
-            
-            *{
-                margin: 0;
-                padding: 0;
-                box-sizing: border-box;
-            }
-            
-            body{
-                background-image: url(aa017ae02051380503af0051c67b4d04.jpg);
-            }
-            
-            .mainIcon1{
-                border-radius: 12px;
-                padding: 5px 175px;
-                font-size: 30px;
-                background-color: rgba(213, 210, 210, 0.75);
-                margin-top: 275px;
-                position: absolute;
-                top: 50%;
-                left: 0%;
-                background-image: url('./src/images/itinerary.png');
-                background-size: 400px 400px;
-                background-position: center;
-                background-repeat: no-repeat;
-            }
-            
-            .mainIcon2{
-                border-radius: 12px;
-                padding: 5px 175px;
-                font-size: 30px;
-                background-color: rgba(213, 210, 210, 0.75);
-                margin-top: 275px;
-                position: absolute;
-                top: 50%;
-                left: 55%;
-                background-image: url('./src/images/media.png');
-                background-size: 300px 300px;
-                background-position: center;
-                background-repeat: no-repeat;
-            }
-            .form-row {
-                display: flex;
-                flex-wrap: wrap;
-                align-items: center;
-            }
-            
-            .form-group {
-                flex: 1;
-                padding-right: 10px;
-            }
-            
-            .container{
-                padding:  10px, 10%;
-                margin-left: auto;
-                position: relative;
-            }
-            
-            .wrapper{
-                position: fixed;
-                top: 25%;
-                left: 35%;
-                transform: translate(-50%, -50%);
-                width: 400px;
-                height: 440px;
-                background: white;
-                border: 2px solid rgba(255, 255, 255, 0.5);
-                border-radius: 20px;
-                backdrop-filter: blur(20px);
-                box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                overflow: hidden;
-                transform: scale(0);
-                transition: transform .5s ease, height .2s ease;
-            }
-            
-            .wrapper.active-popup{
-                transform: scale(1);
-            }
-            
-            .wrapper.active{
-                height: 520px;
-            }
-            
-            
-            .wrapper .form-box{
-                width: 100%;
-                padding: 40px;
-            }
-            
-            .wrapper .form-box.login{
-                transition: transform .18s ease;
-                transform: translateX(0);
-            }
-            
-            .wrapper.active .form-box.login{
-                transition: none;
-                transform: translateX(-400px);
-            }
-            
-            .wrapper .form-box.register{
-                position: absolute;
-                transition: none;
-                transform: translateX(400px);
-            }
-            
-            .wrapper.active .form-box.register{
-                transition: transform .18s ease;
-                transform: translateX(0);
-            }
-            
-            .wrapper .icon-close{
-                position: absolute;
-                top: 0;
-                right: 0;
-                width: 45px;
-                height: 45px;
-                background: black;
-                font-size: 2em;
-                color: white;
-                display: flex;
-                justify-content: center;
-                align-items: center;
-                border-bottom-left-radius: 20px;
-                cursor: pointer;
-                z-index: 1;
-            }
-            
-            .form-box h2{
-                font-size: 2em;
-                color: #162938;
-                text-align: center;
-            }
-            
-            .input-box{
-                position: relative;
-                width: 100%;
-                height: 50px;
-                border-bottom: 2px solid black;
-                margin: 30px 0;
-            }
-            
-            .input-box label{
-                position: absolute;
-                top:  50%;
-                left: 5px;
-                transform: translateY(-200%);
-                font-size: 1em;
-                color: black;
-                font-weight: 500;
-                pointer-events: none;
-            }
-            
-            
-            .input-box input{
-                width: 100%;
-                height: 100%;
-                background: transparent;
-                border: none;
-                outline: none;
-                font-size: 1em;
-                color: black;
-                font-weight: 600;
-                padding: 0 35px 0 5px;
-            }
-            
-            .input-box .icon{
-                position: absolute;
-                right: 8px;
-                font-size: 1.2em;
-                color: black;
-                line-height: 57px;
-            }
-            
-            
-            
-            .remember-forgot{
-                font-size: 0.9em;
-                color: black;
-                font-weight: 500;
-                margin: -15px 0 15px;
-                display: flex;
-                justify-content: space-between;
-            }
-            
-            .remember-forgot label input{
-                accent-color: black;
-                margin-right: 3px;
-            }
-            
-            .remember-forgot a{
-                color: black;
-                text-decoration: none;
-            }
-            
-            .remember-forgot a:hover{
-                text-decoration: underline;
-            }
-            
-            .btn{
-                width: 100%;
-                height: 45px;
-                background: black;
-                border: none;
-                outline: none;
-                border-radius: 6px;
-                cursor: pointer;
-                font-size: 1em;
-                color: white;
-                font-weight: 500;
-            }
-            
-            .login-register{
-                font-size: 0.9em;
-                color: black;
-                text-align: center;
-                font-weight: 500;
-                margin: 25px 0 10px;
-            }
-            
-            .login-register p a{
-                color: black;
-                text-decoration: none;
-                font-weight: 600;
-            }
-            
-            .login-register p a:hover{
-                text-decoration: underline;
-            }
-            
-        </style>
-        
-        
-        <script>
-            const wrapper = document.querySelector('.wrapper');
-            const loginLink = document.querySelector('.login-link');
-            const registerLink = document.querySelector('.register-link');
-            const btnPopup = document.querySelector('.btnLogin-popup');
-            const iconClose = document.querySelector('.icon-close');
-            
-            
-            
-            registerLink.addEventListener('click',()=> {
-                wrapper.classList.add('active');
-            });
-            
-            loginLink.addEventListener('click',()=> {
-                wrapper.classList.remove('active');
-            });
-            
-            btnPopup.addEventListener('click',()=> {
-                wrapper.classList.add('active-popup');
-            });
-            
-            iconClose.addEventListener('click',()=> {
-                wrapper.classList.remove('active-popup');
-            });
-        </script>
-        
+            </dialog>
+
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+
+</body>
+
+</html>
+
+<style>
+  
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    
+    body{
+
+        background-image: url('./src/images/polaroidCollage.png');
+    }
+    
+    .container{
+        padding:  10px, 10%;
+        margin-left: auto;
+        position: relative;
+    }
+    
+    nav{
+        display: flex;
+        align-items: center;
+        justify-content: end;
+        flex-wrap: wrap; 
+        position: relative;
+    }
+    
+    nav a{
+        color: rgb(0, 149, 255);
+    }
+    
+    
+    nav a::after{
+        content: '';
+        width: 0;
+        height: 2px;
+        background: #99f;
+        position: absolute;
+        left: 0;
+        bottom: -6px;
+        transition: 0.5s;
+    }
+    
+    nav a:hover::after{
+        width: 100%;
+    }
+    
+    .header-text{
+        margin-top: 25%;
+        margin-left: 5%;
+        font-size: 100px;
+    }
+
+    .mainIcon1{
+        border-radius: 12px;
+        padding: 175px 160px;
+        font-size: 30px;
+        background-color: rgba(213, 210, 210, 0.75);
+        margin-top: 275px;
+        position: absolute;
+        top: 50%;
+        left: 5%;
+        background-image: url('./src/images/itinerary.png');
+        background-size: 400px 400px;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .mainIcon2{
+        border-radius: 12px;
+        padding: 175px 175px;
+        font-size: 30px;
+        background-color: rgba(213, 210, 210, 0.75);
+        margin-top: 275px;
+        position: absolute;
+        top: 50%;
+        left: 55%;
+        background-image: url('./src/images/media.png');
+        background-size: 300px 300px;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+
+    .slogan{
+        font-size: 30px;
+        background-color: rbga(213, 210, 210, 0.75);
+        border-radius: 12px;
+        margin: 20px 0 0 25px;
+    }
+
+/* Everything below is for the login/register */
+
+    .wrapper{
+    position: fixed;
+    top: 25%;
+    left: 40%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 440px;
+    background: white;
+    border: 2px solid rgba(255, 255, 255, 0.5);
+    border-radius: 20px;
+    backdrop-filter: blur(20px);
+    box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    transform: scale(0);
+    transition: transform .5s ease, height .2s ease;
+}
+
+.wrapper.active-popup{
+    transform: scale(1);
+}
+
+.wrapper.active{
+    height: 520px;
+}
+
+
+.wrapper .form-box{
+    width: 100%;
+    padding: 40px;
+}
+
+.wrapper .form-box.login{
+    transition: transform .18s ease;
+    transform: translateX(0);
+}
+
+.wrapper.active .form-box.login{
+    transition: none;
+    transform: translateX(-400px);
+}
+
+.wrapper .form-box.register{
+    position: absolute;
+    transition: none;
+    transform: translateX(400px);
+}
+
+.wrapper.active .form-box.register{
+    transition: transform .18s ease;
+    transform: translateX(0);
+}
+
+.wrapper .icon-close{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 45px;
+    height: 45px;
+    background: black;
+    font-size: 2em;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-bottom-left-radius: 20px;
+    cursor: pointer;
+    z-index: 1;
+}
+
+.form-box h2{
+    font-size: 2em;
+    color: #162938;
+    text-align: center;
+}
+
+.input-box{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    border-bottom: 2px solid black;
+    margin: 30px 0;
+}
+
+.input-box label{
+    position: absolute;
+    top:  50%;
+    left: 5px;
+    transform: translateY(-200%);
+    font-size: 1em;
+    color: black;
+    font-weight: 500;
+    pointer-events: none;
+}
+
+
+.input-box input{
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    font-size: 1em;
+    color: black;
+    font-weight: 600;
+    padding: 0 35px 0 5px;
+}
+
+.input-box .icon{
+    position: absolute;
+    right: 8px;
+    font-size: 1.2em;
+    color: black;
+    line-height: 57px;
+}
+
+
+
+.remember-forgot{
+    font-size: 0.9em;
+    color: black;
+    font-weight: 500;
+    margin: -15px 0 15px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.remember-forgot label input{
+    accent-color: black;
+    margin-right: 3px;
+}
+
+.remember-forgot a{
+    color: black;
+    text-decoration: none;
+}
+
+.remember-forgot a:hover{
+    text-decoration: underline;
+}
+
+.btn{
+    width: 100%;
+    height: 45px;
+    background: black;
+    border: none;
+    outline: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 1em;
+    color: white;
+    font-weight: 500;
+}
+
+.login-register{
+    font-size: 0.9em;
+    color: black;
+    text-align: center;
+    font-weight: 500;
+    margin: 25px 0 10px;
+}
+
+.login-register p a{
+    color: black;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.login-register p a:hover{
+    text-decoration: underline;
+}
+
+</style>
+
+<script>
+    const wrapper = document.querySelector('.wrapper');
+    const loginLink = document.querySelector('.login-link');
+    const registerLink = document.querySelector('.register-link');
+    const btnPopup = document.querySelector('.btnLogin-popup');
+    const iconClose = document.querySelector('.icon-close');
+    const modal = document.getElementById("modal");
+    
+    registerLink.addEventListener('click',()=> {
+        wrapper.classList.add('active');
+    });
+    
+    loginLink.addEventListener('click',()=> {
+        wrapper.classList.remove('active');
+    });
+    
+    btnPopup.addEventListener('click',()=> {
+        wrapper.classList.add('active-popup');
+    });
+    
+    iconClose.addEventListener('click',()=> {
+        wrapper.classList.remove('active-popup');
+    });
+</script>
+
