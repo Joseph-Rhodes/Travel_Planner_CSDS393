@@ -8,6 +8,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>    
+    <script src="node_modules/jasmine-core/lib/jasmine-core/jasmine.js"></script>
+    <script src="node_modules/jasmine-core/lib/jasmine-core/jasmine-html.js"></script>
+    <script src="node_modules/jasmine-core/lib/jasmine-core/boot.js"></script>
+    
+    
     
 </head>
 <body>
@@ -148,6 +153,7 @@
                         <input type="number" class="form-control" id="activity_cost" min="0" step="0.01" required>
                     </div>
                 </div>
+                <!-- Change this button to submit when done -->
                 <button type="button" class="btn btn-primary" id="add_activity">Add Activity</button>
             </form>
             <br>
@@ -165,168 +171,164 @@
                     <!-- Table rows will be dynamically added here -->
                 </tbody>
             </table>
-            <button class="btn btn-success" id="create_plan">Create Plan</button>
+            <button class="btn btn-success" tpye = "submit" id="create_plan">Create Plan</button>
         </div>
     </div>
     
-    
-    <style>
-        .form-row {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-        }
-        
-        .form-group {
-            flex: 1;
-            padding-right: 10px;
-        }
-        
-        .container{
-            
-            padding: 50px;
-        }
-        
-        body {
-            font-family: Arial, sans-serif;
-            /* background-image: url(); */
-        }
-        
-        form {
-            background-color: #f9f9f9;
-            padding: 20px;
-            border-radius: 5px;
-            max-width: 600px;
-            margin: 20px auto;
-        }
-        
-        form label {
-            display: block;
-            font-weight: bold;
-            margin-top: 10px;
-        }
-        
-        
-        form input[type="text"], form input[type="date"] {
-            width: 100%;
-            padding: 8px;
-            margin-top: 6px;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            outline: none;
-        }
-        
-        form input[type="number"] {
-            width: 100%;
-            padding: 8px;
-            margin-top: 6px;
-            box-sizing: border-box;
-            border: 1px solid #ccc;
-            outline: none;
-        }
-        
-        form input[type="submit"] {
-            background-color: #4CAF50;
-            color: white;
-            padding: 12px 20px;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-            margin-top: 20px;
-        }
-        
-        form input[type="submit"]:hover {
-            background-color: #45a049;
-        }
-        
-        #search_results {
-            margin-top: 30px;
-        }
-        
-        .radio_buttons {
-            display: inline-block;
-            width: 150px;
-            text-align: right;
-            margin-right: 5px;
-        }
-        
-        .radio_buttons p{
-            display: inline-block;
-            margin-right: 10px;
-        }
-        
-        
-        
-        
-    </style>
-    
-    <script>
-        $(document).ready(function() {
-            // Add activity functionality here
-        });
-        
-        
-        document.getElementById('add_activity').addEventListener('click', function() {
-            // Retrieve input values
-            var date = document.getElementById('activity_date').value;
-            var time = document.getElementById('activity_time').value;
-            var desc = document.getElementById('activity_desc').value;
-            var cost = document.getElementById('activity_cost').value;
-            
-            // Convert military time to 12-hour time
-            var timeArray = time.split(':');
-            var hours = timeArray[0];
-            var minutes = timeArray[1];
-            var amPm = hours >= 12 ? 'PM' : 'AM';
-            hours = hours % 12;
-            hours = hours ? hours : 12; // the hour '0' should be '12'
-            time = hours + ':' + minutes + ' ' + amPm;
-            
-            // Clear input fields
-            document.getElementById('activity_date').value = '';
-            document.getElementById('activity_time').value = '';
-            document.getElementById('activity_desc').value = '';
-            document.getElementById('activity_cost').value = '';
-            
-            // Create new row and cells
-            var table = document.getElementById('activity_table');
-            var row = table.insertRow(-1);
-            var cell1 = row.insertCell(0);
-            var cell2 = row.insertCell(1);
-            var cell3 = row.insertCell(2);
-            var cell4 = row.insertCell(3);
-            var cell5 = row.insertCell(4);
-            cell1.innerHTML = date;
-            cell2.innerHTML = time;
-            cell3.innerHTML = desc;
-            cell4.innerHTML = cost;
-            
-            // Create delete button
-            var deleteButton = document.createElement('button');
-            deleteButton.innerHTML = 'Delete';
-            deleteButton.className = 'btn btn-danger btn-sm';
-            
-            // Handle delete button click event
-            deleteButton.addEventListener('click', function() {
-                var row = this.parentNode.parentNode;
-                row.parentNode.removeChild(row);
-            });
-            
-            cell5.appendChild(deleteButton);        
-        });
-        
-        
-        
-        
-        
-        
-        // Disables the return data when the one-way button is selected
-        document.getElementById('flight_search_form').addEventListener('change', function() {
-            var isOneWay = document.getElementById('one_way').checked;
-            document.getElementById('return_date').disabled = isOneWay;
-        });
-    </script>
-    
 </body>
 </html>
+
+
+<style>
+    .form-row {
+        display: flex;
+        flex-wrap: wrap;
+        align-items: center;
+    }
+    
+    .form-group {
+        flex: 1;
+        padding-right: 10px;
+    }
+    
+    .container{
+        
+        padding: 50px;
+    }
+    
+    body {
+        font-family: Arial, sans-serif;
+        /* background-image: url(cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIyLTA1L3B4MTA1NzQwNC1pbWFnZS1qb2I2MzAtYV8xLmpwZw.jpg); */
+    }
+    
+    form {
+        background-color: #f9f9f9;
+        padding: 20px;
+        border-radius: 5px;
+        max-width: 600px;
+        margin: 20px auto;
+    }
+    
+    form label {
+        display: block;
+        font-weight: bold;
+        margin-top: 10px;
+    }
+    
+    
+    form input[type="text"], form input[type="date"] {
+        width: 100%;
+        padding: 8px;
+        margin-top: 6px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        outline: none;
+    }
+    
+    form input[type="number"] {
+        width: 100%;
+        padding: 8px;
+        margin-top: 6px;
+        box-sizing: border-box;
+        border: 1px solid #ccc;
+        outline: none;
+    }
+    
+    form input[type="submit"] {
+        background-color: #4CAF50;
+        color: white;
+        padding: 12px 20px;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        font-size: 16px;
+        margin-top: 20px;
+    }
+    
+    form input[type="submit"]:hover {
+        background-color: #45a049;
+    }
+    
+    #search_results {
+        margin-top: 30px;
+    }
+    
+    .radio_buttons {
+        display: inline-block;
+        width: 150px;
+        text-align: right;
+        margin-right: 5px;
+    }
+    
+    .radio_buttons p{
+        display: inline-block;
+        margin-right: 10px;
+    }
+    
+</style>
+
+<script>
+$(document).ready(function() {
+    // Add itinerary-specific functionality here
+});
+
+document.getElementById('add_activity').addEventListener('click', function() {
+    // Retrieve input values
+    var date = document.getElementById('activity_date').value;
+    var time = document.getElementById('activity_time').value;
+    var desc = document.getElementById('activity_desc').value;
+    var cost = document.getElementById('activity_cost').value;
+    
+    // Convert military time to 12-hour time
+    var timeArray = time.split(':');
+    var hours = timeArray[0];
+    var minutes = timeArray[1];
+    var amPm = hours >= 12 ? 'PM' : 'AM';
+    hours = hours % 12;
+    hours = hours ? hours : 12; // the hour '0' should be '12'
+    time = hours + ':' + minutes + ' ' + amPm;
+    
+    // Clear input fields
+    document.getElementById('activity_date').value = '';
+    document.getElementById('activity_time').value = '';
+    document.getElementById('activity_desc').value = '';
+    document.getElementById('activity_cost').value = '';
+    
+    // Create new row and cells
+    var table = document.getElementById('activity_table');
+    var row = table.insertRow(-1);
+    var cell1 = row.insertCell(0);
+    var cell2 = row.insertCell(1);
+    var cell3 = row.insertCell(2);
+    var cell4 = row.insertCell(3);
+    var cell5 = row.insertCell(4);
+    cell1.innerHTML = date;
+    cell2.innerHTML = time;
+    cell3.innerHTML = desc;
+    cell4.innerHTML = cost;
+    
+    // Create delete button
+    var deleteButton = document.createElement('button');
+    deleteButton.innerHTML = 'Delete';
+    deleteButton.className = 'btn btn-danger btn-sm';
+    
+    // Handle delete button click event
+    deleteButton.addEventListener('click', function() {
+        var row = this.parentNode.parentNode;
+        row.parentNode.removeChild(row);
+    });
+    
+    cell5.appendChild(deleteButton);        
+});
+
+
+// Disables the return data when the one-way button is selected
+document.getElementById('flight_search_form').addEventListener('change', function() {
+    var isOneWay = document.getElementById('one_way').checked;
+    document.getElementById('return_date').disabled = isOneWay;
+});
+
+
+
+
+</script>
