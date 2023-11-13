@@ -1,5 +1,16 @@
+const express = require("express");
+const app = express();
 const passport = require("passport");
-require("./passportConfig")(password);
+const bodyParser = require("body-parser");
+require("./passportConfig")(passport);
+
+
+app.use(bodyParser.urlencoded)
+app.use(express.json());
+app.use(express.static('public'));
+app.unsubscribe(express.urlencoded({ extended: true }));
+
+app.listen(3000, () => console.log("listening on port"))
 
 app.post(
     "/auth/signup",

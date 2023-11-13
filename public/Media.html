@@ -42,24 +42,31 @@
                         </ul>
                     </div>
                 </nav>
-                
+          <form>   
          <div class="container">
         <div class="row">
-            <div class="container">
+            <div class="container" id="myForm">
                 <div class="col-md-6">
+                   
                     <div class="row">
+                
                     <div class="form-group">
                         <label >Where did you go?</label>
                         <input class="form-control" id="place" required></input>
                     </div>
+                    
+                
                     </div>
+                
                     <div class="row">
                         <div class="form-group">
                             <label >Where did you stay?</label>
                             <input class="form-control" id="hotel" required ></input>
                         </div>
-
+                
                     </div>
+                    
+                
                     <div class="row">
                         <div class="form-group">
                             <label >What was your favorite activity?</label>
@@ -80,7 +87,11 @@
                             <input class="form-control" id="resturant" required></input>
                         </div>
 
+                
+            
                     </div>
+                    
+                
                 </div>
             <div class="col-md-6">
                             <div class="d-flex justify-content-center">
@@ -108,7 +119,7 @@
                             
                                 <div class="img-overlay">
                                     <div class="btn btn-primary btn-rounded btn-xs">
-                                        <label class="form-label text-white m-1" for="customFile2">Choose a picture</label>
+                                        <label class="form-label text-white m-1" for="customFile2" required>Choose a picture</label>
                                         <input required  type="file" class="form-control d-none" id="customFile2" onchange="displaySelectedImage(event, 'selectedImage2')" />
                                 </div>
                             </div>
@@ -125,11 +136,11 @@
             </div>
         </div>
         <div class="row">
-            <form>
-                <input type="submit" value="Post">
-            </form>
+           
         </div>
         </div>
+        <input type="submit" id="check" value="Post">
+    </form>
 </body>
 
 
@@ -154,7 +165,9 @@
         box-sizing: border-box;
     }
     
-    
+    input:invalid {
+  border: 2px black;
+}
     
     .container{
         background-color: #f9f9f9;;
@@ -233,4 +246,6 @@
         reader.readAsDataURL(fileInput.files[0]);
     }
 }
+
+
 </script>

@@ -5,7 +5,7 @@ const { usernameExists, registerUser, matchingPass } = require("./helper");
 module.exports = (passport) => {
 
     // registration
-    passport.user(
+    passport.use(
         "local-signup",
         new LocalStrategy(
             {
@@ -35,7 +35,7 @@ module.exports = (passport) => {
     );
 
     // login
-    passport.user(
+    passport.use(
         "local-login",
         new LocalStrategy(
             {
