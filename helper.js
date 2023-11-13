@@ -13,7 +13,7 @@ const usernameExists = async (username) => {
 // to register a user
 const registerUser = async (username, email, password) => {
     const salt = await bcrypt.genSalt(10);
-    const hash = await bcrypt.hast(password, salt);
+    const hash = await bcrypt.hash(password, salt);
 
     const data = await client.query(
         "INSERT INTO user(username, email, password) VALUES ($1, $2, $3) RETURNING id, username, password",

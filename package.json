@@ -1,0 +1,31 @@
+{
+  "name": "travel_planner_csds393",
+  "version": "1.0.0",
+  "description": "csds393 travel planning and sharing system",
+  "main": "index.js",
+  "scripts": {
+    "test": "jasmine",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Joseph-Rhodes/Travel_Planner_CSDS393.git"
+  },
+  "keywords": [
+    "software",
+    "engineering"
+  ],
+  "author": "Joseph Rhodes, Dominic Sais, Montgomarie Essex",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Joseph-Rhodes/Travel_Planner_CSDS393/issues"
+  },
+  "homepage": "https://github.com/Joseph-Rhodes/Travel_Planner_CSDS393#readme",
+  "devDependencies": {
+    "jasmine": "^5.1.0"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "pg": "^8.11.3"
+  }
+}

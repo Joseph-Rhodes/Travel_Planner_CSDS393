@@ -9,6 +9,6 @@ const client = new Client({
     port
 });
 
-await client.connect()
+client.connect()
 
 module.exports = client;

@@ -1,8 +1,0 @@
-
-module.exports = {
-    user: 'postgres',
-    host: 'localhost',
-    database: 'travel',
-    password:'rawr',
-    port: 5432,
-};
