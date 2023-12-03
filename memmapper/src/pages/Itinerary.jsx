@@ -1,7 +1,82 @@
-import React from 'react'
+
 import "../Itinerary.css"
+import React, { useState, useEffect } from 'react';
+
 
 function Itinerary(){
+    
+        // State to manage input values
+        const [activityDate, setActivityDate] = useState('');
+        const [activityTime, setActivityTime] = useState('');
+        const [activityDesc, setActivityDesc] = useState('');
+        const [activityCost, setActivityCost] = useState('');
+        
+      
+        // State to manage activity table rows
+        const [activityRows, setActivityRows] = useState([]);
+      
+        // Function to convert military time to 12-hour time
+        const convertTo12Hour = (time) => {
+          const timeArray = time.split(':');
+          let hours = timeArray[0];
+          const minutes = timeArray[1];
+          const amPm = hours >= 12 ? 'PM' : 'AM';
+          hours = hours % 12 || 12; // the hour '0' should be '12'
+          return `${hours}:${minutes} ${amPm}`;
+        };
+      
+        // Function to handle adding a new activity
+        const handleAddActivity = () => {
+          // Convert military time to 12-hour time
+          const formattedTime = convertTo12Hour(activityTime);
+      
+          // Create new row
+          const newRow = {
+            date: activityDate,
+            time: formattedTime,
+            desc: activityDesc,
+            cost: activityCost,
+          };
+      
+          // Update activityRows state
+          setActivityRows((prevRows) => [...prevRows, newRow]);
+      
+          // Clear input fields
+          setActivityDate('');
+          setActivityTime('');
+          setActivityDesc('');
+          setActivityCost('');
+        };
+      
+        // Function to handle deleting an activity
+        const handleDeleteActivity = (index) => {
+          // Create a copy of the array and remove the specified index
+          const updatedRows = [...activityRows];
+          updatedRows.splice(index, 1);
+      
+          // Update activityRows state
+          setActivityRows(updatedRows);
+
+          
+        
+        };
+        useEffect(() => {
+            const flightSearchForm = document.getElementById('flight_search_form');
+        
+            if (flightSearchForm) {
+              const handleFlightSearchFormChange = () => {
+                const isOneWay = document.getElementById('one_way').checked;
+                document.getElementById('return_date').disabled = isOneWay;
+              };
+        
+              flightSearchForm.addEventListener('change', handleFlightSearchFormChange);
+        
+              return () => {
+                // Cleanup: Remove the event listener when the component is unmounted
+                flightSearchForm.removeEventListener('change', handleFlightSearchFormChange);
+              };
+            }
+          }, []); // Empty dependency array to ensure the effect runs once after the initial render
     return(
         <div>
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
@@ -124,23 +199,27 @@ function Itinerary(){
                     <div className="form-row">
                         <div className="form-group col-md-3">
                             <label for="activity_date">Date:</label>
-                            <input type="date" className="form-control" id="activity_date" required/>
+                            <input type="date" className="form-control" id="activity_date" value={activityDate}
+          onChange={(e) => setActivityDate(e.target.value)}required/>
                         </div>
                         <div className="form-group col-md-3">
                             <label for="activity_time">Time:</label>
-                            <input type="time" className="form-control" id="activity_time" required/>
+                            <input type="time" className="form-control" id="activity_time" required value={activityTime}
+          onChange={(e) => setActivityTime(e.target.value)}/>
                         </div>
                         <div className="form-group col-md-3">
                             <label for="activity_desc">Activity:</label>
-                            <input type="text" className="form-control" id="activity_desc" required/>
+                            <input type="text" className="form-control" id="activity_desc" required value={activityDesc}
+          onChange={(e) => setActivityDesc(e.target.value)}/>
                         </div>
                         <div className="form-group col-md-3">
                             <label for="activity_cost">Cost:</label>
-                            <input type="number" className="form-control" id="activity_cost" min="0" step="0.01" required/>
+                            <input type="number" className="form-control" id="activity_cost" min="0" step="0.01" value={activityCost}
+          onChange={(e) => setActivityCost(e.target.value)} required/>
                         </div>
                     </div>
                     
-                    <button type="button" className="btn btn-primary" id="add_activity">Add Activity</button>
+                    <button type="button" className="btn btn-primary" id="add_activity" onClick={handleAddActivity}>Add Activity</button>
                 </form>
                 <br/>
                 <table className="table">
@@ -154,7 +233,19 @@ function Itinerary(){
                         </tr>
                     </thead>
                     <tbody id="activity_table">
-                    
+                    {activityRows.map((row, index) => (
+                        <tr key={index}>
+                            <td>{row.date}</td>
+                            <td>{row.time}</td>
+                            <td>{row.desc}</td>
+                            <td>{row.cost}</td>
+                            <td>
+                                <button onClick={() => handleDeleteActivity(index)}>
+                                Delete
+                                </button>
+                            </td>
+                        </tr>
+                    ))}
                     </tbody>
                 </table>
                 <button className="btn btn-success" tpye = "submit" id="create_plan">Create Plan</button>
@@ -162,6 +253,7 @@ function Itinerary(){
         </div>
         </div>
         )
+        
     }
 
     export default Itinerary

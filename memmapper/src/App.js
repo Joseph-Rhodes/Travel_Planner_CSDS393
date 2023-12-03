@@ -1,8 +1,7 @@
 
-
 import Homepage from './pages/Homepage.jsx'
 import Media from './pages/Media.jsx'
-import Itinerary from './pages/Itinerary'
+import Itinerary from './pages/Itinerary.jsx'
 import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
 
