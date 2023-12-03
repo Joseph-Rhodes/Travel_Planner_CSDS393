@@ -1,0 +1,84 @@
+.form-row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.form-group {
+    flex: 1;
+    padding-right: 10px;
+}
+
+.container{
+    
+    padding: 50px;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    
+}
+
+form {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+form label {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+}
+
+
+form input[type="text"], form input[type="date"] {
+    width: 100%;
+    padding: 8px;
+    margin-top: 6px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+form input[type="number"] {
+    width: 100%;
+    padding: 8px;
+    margin-top: 6px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+form input[type="submit"] {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    margin-top: 20px;
+}
+
+form input[type="submit"]:hover {
+    background-color: #45a049;
+}
+
+#search_results {
+    margin-top: 30px;
+}
+
+.radio_buttons {
+    display: inline-block;
+    width: 150px;
+    text-align: right;
+    margin-right: 5px;
+}
+
+.radio_buttons p{
+    display: inline-block;
+    margin-right: 10px;
+}
