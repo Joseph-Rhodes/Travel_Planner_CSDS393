@@ -2,6 +2,25 @@ import React from 'react'
 import "../Homepage.css"
 
 function Homepage(){
+    const handleRegisterClick = () => {
+    const wrapper = document.querySelector('.wrapper');
+    wrapper.classList.add('active');
+  };
+
+  const handleLoginClick = () => {
+    const wrapper = document.querySelector('.wrapper');
+    wrapper.classList.remove('active');
+  };
+
+  const handlePopupClick = () => {
+    const wrapper = document.querySelector('.wrapper');
+    wrapper.classList.add('active-popup');
+  };
+
+  const handleIconCloseClick = () => {
+    const wrapper = document.querySelector('.wrapper');
+    wrapper.classList.remove('active-popup');
+  };
     return(
         <div> <nav className="navbar navbar-expand-lg navbar-light bg-light" style={{opacity: "0.75"}}>
         <a className="navbar-brand" style={{fontSize: "30px"}} href="/">MemMapper: For mapping your best memories.</a>
@@ -11,7 +30,7 @@ function Homepage(){
         <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
-                    <button className="nav-link btnLogin-popup" href="#">Login</button>
+                    <button className="nav-link btnLogin-popup" href="#" onClick={handlePopupClick}>Login</button>
                 </li>
             </ul>
         </div>
@@ -25,7 +44,7 @@ function Homepage(){
     </div> 
 
             <dialog id="modal" className="wrapper">
-                <span className="icon-close"><ion-icon name="close"></ion-icon></span>
+                <span className="icon-close" onClick={handleIconCloseClick}><ion-icon name="close"></ion-icon></span>
         
                 
                 <div className="form-box login">
@@ -48,7 +67,7 @@ function Homepage(){
                         </div>
                         <button type="submit" className="btn">Login</button>
                         <div className="login-register">
-                            <p>Don't have an account? <a href="#" className="register-link">Register</a></p>
+                            <p>Don't have an account? <a href="#" className="register-link" onClick={handleRegisterClick}>Register</a></p>
                         </div>
                     </form>
                 </div>
@@ -79,7 +98,7 @@ function Homepage(){
                         </div>
                         <button type="submit" className="btn">Register</button>
                         <div className="login-register">
-                            <p>Already have an account? <a href="#" className="login-link">Login</a></p>
+                            <p>Already have an account? <a href="#" className="login-link" onClick={handleLoginClick}>Login</a></p>
                         </div>
                     </form>
                 </div>
