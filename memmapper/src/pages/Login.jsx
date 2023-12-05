@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import { useNavigate } from "react-router-dom";
 import "../AuthForm.css";
+
 
 export const Login = (props) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         // page does not reload and lose state
@@ -14,30 +17,36 @@ export const Login = (props) => {
     }
 
     function loginUser() {
-        // fetch('http://localhost:3001/', {
-        //   method: 'POST',
-        //   headers: {
-        //     'Content-Type': 'application/json',
-        //   },
-        //   body: JSON.stringify({username}),
-        // })
+        fetch('http://localhost:3001/login', {
+          method: 'POST',
+          headers: {
+            Accept: 'application/json',
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify({username,password}),
+        })
 
-        // // get the results back
-        // .then(async response => {
+        // get the results back
+        .then(async response => {
 
-        //     // converts to readable format
-        //     const data = await response.json();
-        //     if (data.status === 200) {
-        //         setError("Logged in.");
-        //     } else {
-        //         setError("No account with that information exists.");
-        //     }
-        // })
+            if (response.status == 200) {
+                navigate("/Homepage");
+            }
+            
+            
+            // converts to readable format
+            //const data = await response.json();
+            
+           
+            
+            
+            
+        })
         
-        // .catch(error => {
-        //     console.log(error)
-        //     setError("Something went wrong.");
-        // })
+        .catch(error => {
+            console.log(error)
+            setError("Something went wrong.");
+        })
         
       }
 
@@ -51,10 +60,10 @@ export const Login = (props) => {
                 <form className="login-form" onSubmit={handleSubmit} >
                     
                         <label htmlFor="username">Username</label>
-                        <input value={username} onChange={(e) => setUsername(e.target.value)} type="username" placeholder="Enter username" id="username" name="username" />
+                        <input value={username} onChange={(e) => setUsername(e.target.value)} type="username" placeholder="Enter username" id="username" name="username" required/>
                 
                         <label htmlFor="password">Password</label>
-                        <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Enter password" id="password" name="password" />
+                        <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Enter password" id="password" name="password" required/>
                 
                     
                     <button type="submit">Login</button>

@@ -9,7 +9,6 @@ import {BrowserRouter, Routes, Route} from 'react-router-dom'
 
 
 function App() {
-  const [users, setUsers] = useState(false);
   const [currentForm, setCurrentForm] = useState('login');
   
   // login and registration form 

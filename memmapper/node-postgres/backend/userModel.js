@@ -1,13 +1,14 @@
+const passport = require("passport");
 const { pool } = require("./dbConfig");
 
 const getUser = async (body) => {
 
-    const  { username } = body;
+    const  { username, password } = body;
 
     try {
         return await new Promise(function (resolve, reject) {
-            pool.query("SELECT * FROM users WHERE username = $1", 
-            [username],
+            pool.query("SELECT * FROM users WHERE username = $1 AND password = $2", 
+            [username, password],
             (error, results) => {
                 if (error) {
                     reject(error);
@@ -35,7 +36,7 @@ const createUser = async (body) => {
             (error, results) => {
                 if (error) {
                     console.log("incorrect");
-                    reject(new Error("Already exists"));
+                    reject(error);
                 }
 
                 if (results && results.rows) {

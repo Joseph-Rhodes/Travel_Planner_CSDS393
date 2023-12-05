@@ -1,26 +1,15 @@
 import React from 'react'
 import "../Homepage.css"
 
-function Homepage(){
-    const handleRegisterClick = () => {
-    const wrapper = document.querySelector('.wrapper');
-    wrapper.classList.add('active');
-  };
+function Homepage() {
 
   const handleLogoutClick = () => {
-    const wrapper = document.querySelector('.wrapper');
-    wrapper.classList.remove('active');
+    
+
+
   };
 
-  const handlePopupClick = () => {
-    const wrapper = document.querySelector('.wrapper');
-    wrapper.classList.add('active-popup');
-  };
-
-  const handleIconCloseClick = () => {
-    const wrapper = document.querySelector('.wrapper');
-    wrapper.classList.remove('active-popup');
-  };
+  
     return(
         <div> <nav className="navbar navbar-expand-lg navbar-light bg-light" style={{opacity: "0.75"}}>
         <a className="navbar-brand" style={{fontSize: "30px"}} href="/">MemMapper: For mapping your best memories.</a>
@@ -30,7 +19,7 @@ function Homepage(){
         <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
-                    <button className="nav-link btnLogin-popup" href="./Login" onClick={handleLogoutClick}>Logout</button>
+                    <button className="nav-link btnLogin-popup" onClick={handleLogoutClick}>Logout</button>
                 </li>
             </ul>
         </div>
@@ -46,7 +35,7 @@ function Homepage(){
        
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
-    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script></div>
+    <script noModule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script></div>
     )
 }
 

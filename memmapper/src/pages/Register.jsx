@@ -9,6 +9,7 @@ export const Register = (props) => {
     const handleSubmit = (e) => {
         // page does not reload and lose state
         e.preventDefault();
+        
         registerUser();
     }
 
@@ -48,13 +49,13 @@ export const Register = (props) => {
                 <span>{error}</span>
                 <form className="register-form" onSubmit={handleSubmit}>
                     <label htmlFor="username">Username</label>
-                    <input value={username} onChange={(e) => setUsername(e.target.value)} type="username" placeholder="Enter username" id="username" name="username" />
+                    <input value={username} onChange={(e) => setUsername(e.target.value)} type="username" placeholder="Enter username" id="username" name="username" required/>
 
                     <label htmlFor="email">Email</label>
-                    <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Enter email" id="email" name="email" />
+                    <input value={email} onChange={(e) => setEmail(e.target.value)} type="email" placeholder="Enter email" id="email" name="email" required/>
 
                     <label htmlFor="password">Password</label>
-                    <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Enter password" id="password" name="password" />
+                    <input value={password} onChange={(e) => setPassword(e.target.value)} type="password" placeholder="Enter password" id="password" name="password" required/>
 
                     <button type="submit">Register</button>
                    
