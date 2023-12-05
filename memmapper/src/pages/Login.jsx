@@ -32,10 +32,10 @@ export const Login = (props) => {
             // converts to readable format
             //const data = await response.json();
 
-            if (response.status == 200) {
+            if (response.status === 200) {
                 navigate("/Homepage");
             } else {
-                setError("u messed up.")
+                setError("Incorrect credentials. Try again")
             }
             
         })

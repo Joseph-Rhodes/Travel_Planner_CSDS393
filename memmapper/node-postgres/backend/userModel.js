@@ -10,14 +10,30 @@ const getUser = async (body) => {
         return await new Promise(function (resolve, reject) {
             pool.query("SELECT * FROM users WHERE username = $1", 
             [username],
-            (error, results) => {
+            async (error, results) => {
                 if (error) {
                     reject(error);
                 }
-                if (results.rows.length == 0 || !bcrypt.compare(password, results.rows[0].password)) {
-                    reject(new Error("Incorrect credentials."));
+
+                // no users with username
+                if (results.rows.length == 0) {
+                    reject(new Error("Incorrect username."));
+                
+                // check input password to hashedpass
                 } else {
-                    resolve(results.rows);
+                    try {
+                        const passwordsMatch = await bcrypt.compare(password, results.rows[0].password);
+                    
+                        if (passwordsMatch) {
+                            console.log("match yuh.");
+                            resolve(results.rows);
+                        } else {
+                            reject(new Error("Incorrect password."));
+                        }
+                    } catch (bcryptError) {
+                        reject(bcryptError);
+                    }
+                    
                 }
                 
             });
