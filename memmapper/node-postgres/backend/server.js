@@ -20,12 +20,14 @@ app.get('/', (req, res) => {
 app.post('/login', (req, res) => {
     user_model.getUser(req.body)
     .then(response => {
+        console.log("dis is criminal");
         res.status(200).send(response);
         
     })
     .catch(error => {
+        console.log("wut");
         res.status(500).send(error);
-        console.log(error);
+        
     })
 });
 
@@ -43,7 +45,8 @@ app.post('/register', (req, res) => {
 
     // rejected
     .catch(error => {
-        res.status(500).send(error);
+        console.log("error: ", error)
+        res.status(400).send(error);
     })
 })
 

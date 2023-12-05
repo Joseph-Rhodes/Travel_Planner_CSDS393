@@ -24,13 +24,12 @@ export const Register = (props) => {
 
         // get the results back
         .then(async response => {
-
-            // converts to readable format
-            const data = await response.json();
-            if (data.status === 200) {
-                setError("Succesfully registered.");
+            if (response.status === 200) {
+                setError("Succesfully registered. Proceed to login.");
+            } else if (response.status === 400) {
+                setError("Username already exists. Try again.");
             } else {
-                setError("Username already exists.");
+                setError("Something bad happened.")
             }
         })
         
@@ -40,7 +39,6 @@ export const Register = (props) => {
         
       }
 
-    
 
     return (
         <div className="wrapper">

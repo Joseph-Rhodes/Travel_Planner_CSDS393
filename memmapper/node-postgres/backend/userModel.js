@@ -1,5 +1,6 @@
 const passport = require("passport");
 const { pool } = require("./dbConfig");
+const bcrypt = require("bcrypt");
 
 const getUser = async (body) => {
 
@@ -7,14 +8,14 @@ const getUser = async (body) => {
 
     try {
         return await new Promise(function (resolve, reject) {
-            pool.query("SELECT * FROM users WHERE username = $1 AND password = $2", 
-            [username, password],
+            pool.query("SELECT * FROM users WHERE username = $1", 
+            [username],
             (error, results) => {
                 if (error) {
                     reject(error);
                 }
-                if (results.rows.length == 0) {
-                    reject(new Error("That user does not exist."));
+                if (results.rows.length == 0 || !bcrypt.compare(password, results.rows[0].password)) {
+                    reject(new Error("Incorrect credentials."));
                 } else {
                     resolve(results.rows);
                 }
@@ -29,21 +30,26 @@ const getUser = async (body) => {
 
 const createUser = async (body) => {
     const { username, email, password } = body;
-    
+    const hashPW = await bcrypt.hash(password, 10);
+
     return new Promise(function (resolve, reject) {
         pool.query(
-            "INSERT INTO users (username, email, password) VALUES ($1, $2, $3) RETURNING *", [username, email, password], 
+            "INSERT INTO users (username, email, password) VALUES ($1, $2, $3) RETURNING *", 
+            [username, email, hashPW], 
             (error, results) => {
                 if (error) {
-                    console.log("incorrect");
-                    reject(error);
-                }
 
-                if (results && results.rows) {
+                    // duplicate user name
+                    if (error.code === '23505') {
+                        console.log("Username already in use.");
+                        reject("Username already in use.");
+                    } else {
+                        console.error("Error during registration:", error);
+                        reject("Could not register.");
+                    }
+                } else {
                     console.log(results.rows);
                     resolve(results.rows[0]);
-                } else {
-                    reject(new Error("Could not register."));
                 }
             }
         );

@@ -28,18 +28,15 @@ export const Login = (props) => {
 
         // get the results back
         .then(async response => {
-
-            if (response.status == 200) {
-                navigate("/Homepage");
-            }
-            
             
             // converts to readable format
             //const data = await response.json();
-            
-           
-            
-            
+
+            if (response.status == 200) {
+                navigate("/Homepage");
+            } else {
+                setError("u messed up.")
+            }
             
         })
         
@@ -49,8 +46,6 @@ export const Login = (props) => {
         })
         
       }
-
-    
 
     return (
         <div className="wrapper">
