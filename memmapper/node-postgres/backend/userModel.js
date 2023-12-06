@@ -25,7 +25,6 @@ const getUser = async (body) => {
                         const passwordsMatch = await bcrypt.compare(password, results.rows[0].password);
                     
                         if (passwordsMatch) {
-                            console.log("match yuh.");
                             resolve(results.rows);
                         } else {
                             reject(new Error("Incorrect password."));
@@ -50,22 +49,25 @@ const createUser = async (body) => {
 
     return new Promise(function (resolve, reject) {
         pool.query(
-            "INSERT INTO users (username, email, password) VALUES ($1, $2, $3) RETURNING *", 
+            "INSERT INTO users (username, email, password) VALUES ($1, $2, $3) RETURNING id", 
             [username, email, hashPW], 
             (error, results) => {
                 if (error) {
 
                     // duplicate user name
                     if (error.code === '23505') {
-                        console.log("Username already in use.");
-                        reject("Username already in use.");
-                    } else {
-                        console.error("Error during registration:", error);
-                        reject("Could not register.");
-                    }
+                        reject({id: null, error: "Username already in use."});
+                    } 
+
+                    reject(error);
+                }
+
+                if (results && results.rows && results.rows.length > 0) {
+                    resolve({
+                        id: results.rows[0].id
+                    });
                 } else {
-                    console.log(results.rows);
-                    resolve(results.rows[0]);
+                    reject(new Error("Could not register."));
                 }
             }
         );

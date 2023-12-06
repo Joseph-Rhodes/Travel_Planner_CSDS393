@@ -5,7 +5,9 @@ import Itinerary from './pages/Itinerary.jsx'
 import { Login } from './pages/Login.jsx'
 import React, { useState } from 'react';
 import { Register } from './pages/Register.jsx'
-import {BrowserRouter, Routes, Route} from 'react-router-dom'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import PrivateRoutes from './pages/PrivateRoutes.jsx';
+import { UserProvider } from './pages/AccountContext.jsx';
 
 
 function App() {
@@ -17,14 +19,18 @@ function App() {
   }
 
   return (
-    <BrowserRouter>
-    <Routes>
-      <Route path='/' element={currentForm === "login" ? <Login onFormSwitch={toggleForm}/> : <Register onFormSwitch={toggleForm}/>} />
-      <Route path='/Homepage' element={<Homepage/>}/>
-      <Route path='/Media' element={<Media/>}/>
-      <Route path='/Itinerary' element={<Itinerary/>}/>
-    </Routes>
-    </BrowserRouter>
+    <UserProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={currentForm === "login" ? <Login onFormSwitch={toggleForm}/> : <Register onFormSwitch={toggleForm}/>} />
+          
+            <Route path='/Homepage' element={<Homepage/>} />
+            <Route path='/Media' element={<Media/>} />
+            <Route path='/Itinerary' element={<Itinerary/>} />
+          
+        </Routes>
+      </BrowserRouter>
+    </UserProvider>
   )
 }
 

@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { useAuth } from "./AccountContext"
 import "../AuthForm.css";
 
 
@@ -8,6 +9,7 @@ export const Login = (props) => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const navigate = useNavigate();
+    const  { login }  = useAuth();
 
     const handleSubmit = (e) => {
         // page does not reload and lose state
@@ -19,6 +21,7 @@ export const Login = (props) => {
     function loginUser() {
         fetch('http://localhost:3001/login', {
           method: 'POST',
+          credentials: 'include',
           headers: {
             Accept: 'application/json',
             'Content-Type': 'application/json',
@@ -33,19 +36,19 @@ export const Login = (props) => {
             //const data = await response.json();
 
             if (response.status === 200) {
+                login();
+                console.log("hello?");
                 navigate("/Homepage");
             } else {
+                console.log(response);
                 setError("Incorrect credentials. Try again")
             }
-            
         })
-        
         .catch(error => {
             console.log(error)
             setError("Something went wrong.");
-        })
-        
-      }
+        });
+    }
 
     return (
         <div className="wrapper">

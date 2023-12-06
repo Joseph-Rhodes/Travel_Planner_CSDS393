@@ -1,18 +1,16 @@
 import React from 'react'
 import "../Homepage.css"
+import { useAuth } from './AccountContext';
 import { useNavigate } from 'react-router-dom';
 
 function Homepage() {
-
+    const { logout } = useAuth();
     const navigate = useNavigate();
 
-  const handleLogoutClick = () => {
-    
-    navigate("/");
+    const handleLogoutClick = () => {
+        logout();  
+    };
 
-  };
-
-  
     return(
         <div> <nav className="navbar navbar-expand-lg navbar-light bg-light" style={{opacity: "0.75"}}>
         <a className="navbar-brand" style={{fontSize: "30px"}} href="/">MemMapper: For mapping your best memories.</a>

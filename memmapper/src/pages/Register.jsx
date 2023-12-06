@@ -16,6 +16,7 @@ export const Register = (props) => {
     function registerUser() {
         fetch('http://localhost:3001/register', {
           method: 'POST',
+          credentials: 'include',
           headers: {
             'Content-Type': 'application/json',
           },
