@@ -10,21 +10,27 @@
 }
 
 .container{
-    
     padding: 50px;
 }
 
-body {
-    font-family: Arial, sans-serif;
-    
+.container2{
+    padding: 100px;
+}
+
+.container3{
+    padding: 50px;
+}
+
+.body-itinerary {
+    font-family: Arial, sans-serif;    
 }
 
 form {
-    background-color: #f9f9f9;
-    padding: 20px;
+    background-color: #ffffff;
+    padding: 5px 10px;
     border-radius: 5px;
-    max-width: 600px;
-    margin: 20px auto;
+    max-width: 800px;
+    margin: -10px auto;
 }
 
 form label {
@@ -32,7 +38,6 @@ form label {
     font-weight: bold;
     margin-top: 10px;
 }
-
 
 form input[type="text"], form input[type="date"] {
     width: 100%;
@@ -53,7 +58,7 @@ form input[type="number"] {
 }
 
 form input[type="submit"] {
-    background-color: #4CAF50;
+    background-color: #4c7aaf;
     color: white;
     padding: 12px 20px;
     border: none;
