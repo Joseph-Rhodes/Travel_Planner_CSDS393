@@ -11,6 +11,8 @@ function Itinerary(){
         const [activityDesc, setActivityDesc] = useState('');
         const [activityCost, setActivityCost] = useState('');
         
+        // State for flight type
+        const [tripType, setTripType] = useState('round_trip');
       
         // State to manage activity table rows
         const [activityRows, setActivityRows] = useState([]);
@@ -87,7 +89,7 @@ function Itinerary(){
             <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav">
                     <li className="nav-item">
-                        <a className="nav-link" href="/">Home</a>
+                        <a className="nav-link" href="Homepage">Home</a>
                     </li>
                     <li className="nav-item active">
                         <a className="nav-link" href="Itinerary">Create an Plan</a>
@@ -106,19 +108,19 @@ function Itinerary(){
         <div className="container">
             <div className="form-row">
                 <div className="form-group">
-                    <label for="destination">Destination:</label>
+                    <label htmlFor="destination">Destination:</label>
                     <input type="text" id="destination" className="form-control" placeholder="Enter your Destination..."/>
                 </div>
                 <div className="form-group">
-                    <label for="start_date">Start Date:</label>
+                    <label htmlFor="start_date">Start Date:</label>
                     <input type="date" id="start_date" className="form-control"/>
                 </div>
                 <div className="form-group">
-                    <label for="end_date">End Date:</label>
+                    <label htmlFor="end_date">End Date:</label>
                     <input type="date" id="end_date" className="form-control"/>
                 </div>
                 <div className="form-group">
-                    <label for="budget">Budget($):</label>
+                    <label htmlFor="budget">Budget($):</label>
                     <input type="number" id="budget" className="form-control" placeholder="Enter your Budget..."/>
                 </div>
             </div>
@@ -137,59 +139,59 @@ function Itinerary(){
             </div>
             <div className="tab-content">
                 <div className="tab-pane fade show active" id="flight_search">
-                    <form>
+                   
                         
                         <form id="flight_search_form">
-                            <label for="departure_city">Departure City:</label>
+                            <label htmlFor="departure_city">Departure City:</label>
                             <input type="text" id="departure_city" name="departure_city" placeholder="Enter your Departing city..." required/>
                             <br/>
-                            <label for="arrival_city">Arrival City:</label>
+                            <label htmlFor="arrival_city">Arrival City:</label>
                             <input type="text" id="arrival_city" name="arrival_city" placeholder="Enter your Arrival city..." required/>
                             <br/>
                             <label>Trip Type:</label>
                             <div className="radio_buttons">
-                                <input type="radio" id="round_trip" name="trip_type" value="round_trip" checked/>
-                                <p for="round_trip">Round-trip</p>
+                                <input type="radio" id="round_trip" name="trip_type" value="round_trip" checked={tripType === "round_trip"} onChange={() => setTripType('round_trip')}/>
+                                <p htmlFor="round_trip">Round-trip</p>
                             </div>
                             <div className="radio_buttons">
-                                <input type="radio" id="one_way" name="trip_type" value="one_way"/>
-                                <p for="one_way">One-way</p>
+                                <input type="radio" id="one_way" name="trip_type" value="one_way" checked={tripType === "one_way"} onChange={() => setTripType('one_way')}/>
+                                <p htmlFor="one_way">One-way</p>
                             </div>
                             <br/>
-                            <label for="departure_date">Departure Date:</label>
+                            <label htmlFor="departure_date">Departure Date:</label>
                             <input type="date" id="departure_date" name="departure_date" required/>
                             <br/>
-                            <label for="return_date">Return Date:</label>
+                            <label htmlFor="return_date">Return Date:</label>
                             <input type="date" id="return_date" name="return_date"/>
                             <br/>
-                            <label for="num_passengers">Number of Passengers:</label>
+                            <label htmlFor="num_passengers">Number of Passengers:</label>
                             <input type="number" id="num_passengers" name="num_passengers" placeholder="Enter the number of Passengers..." required/>
                             <br/>
                             <input type="submit" value="Search Flights"/>
                         </form>
                         
                         <div id="search_results"></div>
-                    </form>
+                    
                 </div>
                 <div className="tab-pane fade" id="hotel_search">
-                    <form>
+                   
                         
                         <form id="hotel_search_form">
-                            <label for="destination">Destination:</label>
+                            <label htmlFor="destination">Destination:</label>
                             <input type="text" id="destination" name="destination" placeholder="Enter your Destination" required/>
                             <br/>
-                            <label for="checkin_date">Check-in Date:</label>
+                            <label htmlFor="checkin_date">Check-in Date:</label>
                             <input type="date" id="checkin_date" name="checkin_date" required/>
                             <br/>
-                            <label for="checkout_date">Check-out Date:</label>
+                            <label htmlFor="checkout_date">Check-out Date:</label>
                             <input type="date" id="checkout_date" name="checkout_date" required/>
                             <br/>
-                            <label for="guests">Number of Guests:</label>
+                            <label htmlFor="guests">Number of Guests:</label>
                             <input type="number" id="guests" name="guests" min="1" placeholder="Enter the number of Guests..." required/>
                             <br/>
                             <input type="submit" value="Search Hotels"/>
                         </form>
-                    </form>
+                    
                 </div>
             </div>
             
@@ -198,22 +200,22 @@ function Itinerary(){
                 <form id="activity_form">
                     <div className="form-row">
                         <div className="form-group col-md-3">
-                            <label for="activity_date">Date:</label>
+                            <label htmlFor="activity_date">Date:</label>
                             <input type="date" className="form-control" id="activity_date" value={activityDate}
           onChange={(e) => setActivityDate(e.target.value)}required/>
                         </div>
                         <div className="form-group col-md-3">
-                            <label for="activity_time">Time:</label>
+                            <label htmlFor="activity_time">Time:</label>
                             <input type="time" className="form-control" id="activity_time" required value={activityTime}
           onChange={(e) => setActivityTime(e.target.value)}/>
                         </div>
                         <div className="form-group col-md-3">
-                            <label for="activity_desc">Activity:</label>
+                            <label htmlFor="activity_desc">Activity:</label>
                             <input type="text" className="form-control" id="activity_desc" required value={activityDesc}
           onChange={(e) => setActivityDesc(e.target.value)}/>
                         </div>
                         <div className="form-group col-md-3">
-                            <label for="activity_cost">Cost:</label>
+                            <label htmlFor="activity_cost">Cost:</label>
                             <input type="number" className="form-control" id="activity_cost" min="0" step="0.01" value={activityCost}
           onChange={(e) => setActivityCost(e.target.value)} required/>
                         </div>
