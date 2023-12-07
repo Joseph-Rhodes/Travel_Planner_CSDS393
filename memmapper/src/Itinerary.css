@@ -12,11 +12,12 @@
 .containerItinerary{
     
     padding: 50px;
+    background-color: white;
 }
 
 body {
     font-family: Arial, sans-serif;
-    background-image: none;
+    
     
 }
 
