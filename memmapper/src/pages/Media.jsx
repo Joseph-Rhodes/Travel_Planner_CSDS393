@@ -28,9 +28,15 @@
                 const handleSubmit = (e) => {
                     e.preventDefault();
                     setSubmittedData((prevData) => [...prevData, { ...formData, image1: selectedImage1, image2: selectedImage2 }]);
-                    setFormData({});
+                    setFormData({place: '',
+                    hotel: '',
+                    activity: '',
+                    memory: '',
+                    resturant: '',
+                    exampleFormControlTextarea1: '',});
                     setSelectedImage1(null);
                     setSelectedImage2(null);
+                    
                 };
             
                 const handleInputChange = (e) => {
@@ -204,8 +210,8 @@
 
             </div>
             <div className='container center' style={{backgroundColor: "white", maxWidth:'1000px'}}> 
-            <div className='row'>
-                <h1>View Your Past Trips!</h1>
+            <div className='row center'>
+                <h1 Style={{textDecorationLine: 'underline'}}>View Your Past Trips!</h1>
             
             {submittedData && (
                 <div className='container center'>
@@ -214,8 +220,8 @@
                     {submittedData.map((data, index) => (
                         
                     <div key={index}>
-                        <div className='container center' style={{backgroundColor: "peach"}}>
-                        <div className='row'>
+                        <div className='container center' style={{ border: '2px solid #000', padding: '10px', borderRadius: '10px', minWidth:'800px', margin:'5px'}}>
+                        <div className='row' style={{margin: '2px'}}>
                         <div className='col-md-6'>
                         <div className='row'>
                         <h5>Where did you go?</h5>
@@ -270,11 +276,11 @@
                         </div>
                         
                         <div className='col-md-6'>
-                            <div className='row'>
+                            <div className='row center'>
                             {data.image2 && <img className='mainIcon1Media' src={data.image2} alt="Selected Image 2" />}
 
                             </div>
-                        <div className='row'>
+                        <div className='row center'>
                         <h5>talk about your trip?</h5>
                         </div>
                         <div className='row'>
