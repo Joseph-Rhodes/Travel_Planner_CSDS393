@@ -55,11 +55,11 @@
         font-size: 30px;
         background-color: rgba(213, 210, 210, 0.75);
         margin-top: 275px;
-        position: absolute;
+        margin-right: 20px;
         top: 50%;
-        left: 5%;
+        left: 25%;
         background-image: url('./assets/itinerary.png');
-        background-size: 400px 400px;
+        background-size: 300px 300px;
         background-position: center;
         background-repeat: no-repeat;
     }
@@ -70,13 +70,20 @@
         font-size: 30px;
         background-color: rgba(213, 210, 210, 0.75);
         margin-top: 275px;
-        position: absolute;
+        margin-left: 20px;
         top: 50%;
         left: 55%;
         background-image: url('./assets/media.png');
         background-size: 300px 300px;
         background-position: center;
         background-repeat: no-repeat;
+    }
+    .center {
+        display: flex;
+        justify-content: center;
+        
+        
+        
     }
 
     .slogan{

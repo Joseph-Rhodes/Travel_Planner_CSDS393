@@ -9,6 +9,14 @@ form input[type="submit"] {
     margin-top: 20px;
     margin-bottom: 20px;
 }
+form input[type="text"], form input[type="date"] {
+    width: 100%;
+    padding: 8px;
+    margin-top: 6px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    outline: none;
+}
 
 *{
 margin: 0;
@@ -36,9 +44,7 @@ box-sizing: border-box;
     background-image: url('./assets/polaroidStock.jpg');
 }
 
-input:invalid {
-border: 2px black;
-}
+
 
 .containerMedia{
 background-color: #f9f9f9;;
