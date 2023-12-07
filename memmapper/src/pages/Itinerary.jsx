@@ -261,8 +261,8 @@ function Itinerary(){
     
     return(
     
-   
-        <div style={{backgroundColor: "white"}}>
+
+        <div style={{backgroundColor: "beige"}}>
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
                 <a className="navbar-brand" href="Homepage">MemMapper</a>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -501,4 +501,6 @@ function Itinerary(){
     </div>
     )           
 }
+
         export default Itinerary
+        
