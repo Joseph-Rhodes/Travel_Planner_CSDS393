@@ -5,8 +5,8 @@
     }
     
     Body{
-        background-color: beige;
-        /* background-image: url('./assets/polaroidCollage.png'); */
+        /*background-color: beige;*/
+        background-image: url('./assets/polaroidCollage.png'); 
     }
     
     .containerHomepage{
