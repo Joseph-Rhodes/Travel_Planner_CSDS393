@@ -12,6 +12,9 @@ function Homepage() {
     };
 
     return(
+        <div style={{ 
+            backgroundImage: `url("./assets/polaroidCollage.png")` 
+          }}>
         <div> <nav className="navbar navbar-expand-lg navbar-light bg-light" style={{opacity: "0.75"}}>
         <a className="navbar-brand" style={{fontSize: "30px"}} href="/">MemMapper: For mapping your best memories.</a>
         <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -26,10 +29,10 @@ function Homepage() {
         </div>
     </nav>
 
-    <div className="container">
+    <div className="containerHomepage">
         <nav>
-            <a className="mainIcon1" href="Itinerary">Plan a Trip</a>
-            <a className="mainIcon2" href="Media">Media</a>
+            <a className="mainIcon1Homepage" href="Itinerary">Plan a Trip</a>
+            <a className="mainIcon2Homepage" href="Media">Media</a>
         </nav>
     </div> 
 
@@ -37,6 +40,7 @@ function Homepage() {
 
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script noModule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script></div>
+    </div>
     )
 }
 

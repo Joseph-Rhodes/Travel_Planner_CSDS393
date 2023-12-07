@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+import "../Media.css"
 
 
 function Media(){
@@ -45,10 +46,11 @@ function Media(){
                         </ul>
                     </div>
                 </nav>
-          <form>   
-         <div className="container">
-        <div className="row">
-            <div className="container" id="myForm">
+                <div className='center'>
+          <form className='mediaForm center'>   
+         
+        
+            
                 <div className="col-md-6">
                    
                     <div className="row">
@@ -61,7 +63,7 @@ function Media(){
                 
                     </div>
                 
-                    <div className="row">
+                    <div className="row"style={{flex: 1}}>
                         <div className="form-group">
                             <label >Where did you stay?</label>
                             <input className="form-control" id="hotel" required ></input>
@@ -70,21 +72,21 @@ function Media(){
                     </div>
                     
                 
-                    <div className="row">
+                    <div className="row" style={{flex: 1}}>
                         <div className="form-group">
                             <label >What was your favorite activity?</label>
                             <input className="form-control" id="activity" required></input>
                         </div>
 
                     </div>
-                    <div className="row">
+                    <div className="row" style={{flex: 1}}>
                         <div className="form-group">
                             <label>What was your favorite memory?</label>
                             <input className="form-control" id="memory" required></input>
                         </div>
 
                     </div>
-                    <div className="row">
+                    <div className="row" style={{flex: 1}}>
                         <div className="form-group">
                             <label>What was your favorite place to eat?</label>
                             <input className="form-control" id="resturant" required></input>
@@ -95,11 +97,11 @@ function Media(){
                     </div>
                     
                 
-                </div>
-            <div className="col-md-6">
-                            <div className="d-flex justify-content-center">
+                
+            
+                            
                                 <div className="text-center">
-                                <img id="selectedImage1" className="mainIcon1" src={selectedImage1 || "./src/assets/polaroidStock.jpg"}/>
+                                <img id="selectedImage1" className="mainIcon1Media" src={selectedImage1 || "./assets/polaroidStock.jpg"}/>
                                     
                                         <div className="img-overlay">
                                             <div className="btn btn-primary btn-rounded btn-xs">
@@ -108,42 +110,41 @@ function Media(){
                                         </div>
                                     </div>
                                 </div>
-                                </div>
-                            </div>
+                                
+                                <input type="submit" id="check" value="Post"/>
                         </div>
-                    </div>
+                        
+                    
         
-        <div className="row">
-            <div className="container">
+        
                 <div className="col-md-6">
-                    <div className="d-flex justify-content-center">
+                    
                         <div className="text-center">
-                        <img className="mainIcon1" id="selectedImage2" src={selectedImage2 || "./src/assets/polaroidStock.jpg"}/>
+                        <img className="mainIcon1Media" id="selectedImage2" src={selectedImage2 || "./assets/polaroidStock.jpg"}/>
                             
                                 <div className="img-overlay">
                                     <div className="btn btn-primary btn-rounded btn-xs">
                                         <label className="form-label text-white m-1" htmlFor="customFile2" required>Choose a picture</label>
-                                        <input required type="file" className="form-control d-none" id="customFile2" onChange={(e) => displaySelectedImage(e, setSelectedImage2)} />
+                                        <input required type="file"  className="form-control d-none"  id="customFile2" onChange={(e) => displaySelectedImage(e, setSelectedImage2)} />
                                 </div>
                             </div>
+                        
                         </div>
-                        </div>
-                    </div>
-                    <div className="col-md-6">
+                    
+                   
                         <div className="form-group">
                             <label htmlFor="exampleFormControlTextarea1">Talk about your trip!</label>
                             <textarea className="form-control" id="exampleFormControlTextarea1" rows="19" required></textarea>
                             
                         </div>
-                    </div>
+                    
             </div>
-        </div>
-        <div className="row">
-           
-        </div>
-        </div>
-        <input type="submit" id="check" value="Post"/>
+        
+        
+       
+        
     </form>
+    </div>
 </div>
     )
 }

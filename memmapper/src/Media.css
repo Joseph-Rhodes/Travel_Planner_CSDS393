@@ -16,13 +16,33 @@ padding: 0;
 box-sizing: border-box;
 }
 
+.mediaForm{
+   
+    box-sizing: border-box;
+    align-items: center;
+    justify-content: center;
+    display: flex;
+    min-width: 1000px;
+    
+    
+}
+.center {
+    display: flex;
+    justify-content: center;
+    
+    
+}
+.mainIcon1Media{
+    background-image: url('./assets/polaroidStock.jpg');
+}
+
 input:invalid {
 border: 2px black;
 }
 
-.container{
+.containerMedia{
 background-color: #f9f9f9;;
-width: 85%;
+width: 100%;
 
 }
 body {
@@ -63,7 +83,7 @@ left: 45%;
 top: 45%;
 }
 
-.mainIcon1{
+.mainIcon1Media{
 border-radius: 12px;
 font-size: 30px;
 background-position: center;

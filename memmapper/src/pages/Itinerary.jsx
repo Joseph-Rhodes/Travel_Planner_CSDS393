@@ -1,5 +1,5 @@
 
-
+import "../Itinerary.css"
 import React, { useState, useEffect } from 'react';
 
 
@@ -105,8 +105,8 @@ function Itinerary(){
                 </ul>
             </div>
         </nav>
-        <div className="container">
-            <div className="form-row">
+        <div className="containerItinerary">
+            <div className="form-row former">
                 <div className="form-group">
                     <label htmlFor="destination">Destination:</label>
                     <input type="text" id="destination" className="form-control" placeholder="Enter your Destination..."/>

@@ -4,12 +4,12 @@
         box-sizing: border-box;
     }
     
-    .homepageBody{
+    Body{
 
         background-image: url('./assets/polaroidCollage.png');
     }
     
-    .container{
+    .containerHomepage{
         padding:  10px, 10%;
         margin-left: auto;
         position: relative;
@@ -49,7 +49,7 @@
         font-size: 100px;
     }
 
-    .mainIcon1{
+    .mainIcon1Homepage{
         border-radius: 12px;
         padding: 175px 160px;
         font-size: 30px;
@@ -64,7 +64,7 @@
         background-repeat: no-repeat;
     }
 
-    .mainIcon2{
+    .mainIcon2Homepage{
         border-radius: 12px;
         padding: 175px 175px;
         font-size: 30px;
