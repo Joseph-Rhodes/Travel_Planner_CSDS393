@@ -4,20 +4,50 @@ import "../Media.css"
 
 function Media(){
 
-    const [selectedImage1, setSelectedImage1] = useState(null);
-    const [selectedImage2, setSelectedImage2] = useState(null);
-
-    // user to upload photos from their device
-    const displaySelectedImage = (event, setImageFunction) => {
-        const file = event.target.files[0];
-        if (file) {
-            const reader = new FileReader();
-            reader.onloadend = () => {
-                setImageFunction(reader.result);
-            };
+    
+        const [formData, setFormData] = useState({
+          place: '',
+          hotel: '',
+          activity: '',
+          memory: '',
+          resturant: '',
+          // Add other form fields as needed
+        });
+      
+        const [selectedImage1, setSelectedImage1] = useState(null);
+        const [selectedImage2, setSelectedImage2] = useState(null);
+        const [submittedData, setSubmittedData] = useState(null);
+      
+        const displaySelectedImage = (e, setSelectedImage) => {
+          const file = e.target.files[0];
+          const reader = new FileReader();
+      
+          reader.onloadend = () => {
+            setSelectedImage(reader.result);
+          };
+      
+          if (file) {
             reader.readAsDataURL(file);
-        }
-    };
+          }
+        };
+      
+        const handleSubmit = (e) => {
+          e.preventDefault();
+          console.log('Form submitted:', formData);
+          // Handle form submission logic here
+          // You can update state, send data to a server, etc.
+        };
+      
+        const handleInputChange = (e) => {
+          const { id, value } = e.target;
+          setFormData((prevData) => ({
+            ...prevData,
+            [id]: value,
+          }));
+        };
+
+        
+      
 
 
     return(
@@ -47,7 +77,7 @@ function Media(){
                     </div>
                 </nav>
                 <div className='center'>
-          <form className='mediaForm center'>   
+          <form className='mediaForm center' onSubmit={handleSubmit}>   
          
         
             
@@ -57,7 +87,8 @@ function Media(){
                 
                     <div className="form-group">
                         <label >Where did you go?</label>
-                        <input className="form-control" id="place" required></input>
+                        <input className="form-control" id="place" required value={formData.place}
+              onChange={handleInputChange}></input>
                     </div>
                     
                 
@@ -66,7 +97,8 @@ function Media(){
                     <div className="row"style={{flex: 1}}>
                         <div className="form-group">
                             <label >Where did you stay?</label>
-                            <input className="form-control" id="hotel" required ></input>
+                            <input className="form-control" id="hotel" required value={formData.hotel}
+              onChange={handleInputChange}></input>
                         </div>
                 
                     </div>
@@ -75,21 +107,24 @@ function Media(){
                     <div className="row" style={{flex: 1}}>
                         <div className="form-group">
                             <label >What was your favorite activity?</label>
-                            <input className="form-control" id="activity" required></input>
+                            <input className="form-control" id="activity" required value={formData.activity}
+              onChange={handleInputChange}></input>
                         </div>
 
                     </div>
                     <div className="row" style={{flex: 1}}>
                         <div className="form-group">
                             <label>What was your favorite memory?</label>
-                            <input className="form-control" id="memory" required></input>
+                            <input className="form-control" id="memory" required value={formData.memory}
+              onChange={handleInputChange}></input>
                         </div>
 
                     </div>
                     <div className="row" style={{flex: 1}}>
                         <div className="form-group">
                             <label>What was your favorite place to eat?</label>
-                            <input className="form-control" id="resturant" required></input>
+                            <input className="form-control" id="resturant" required value={formData.resturant}
+              onChange={handleInputChange}></input>
                         </div>
 
                 
@@ -134,7 +169,8 @@ function Media(){
                    
                         <div className="form-group">
                             <label htmlFor="exampleFormControlTextarea1">Talk about your trip!</label>
-                            <textarea className="form-control" id="exampleFormControlTextarea1" rows="19" required></textarea>
+                            <textarea className="form-control" id="exampleFormControlTextarea1" rows="19" required value={formData.exampleFormControlTextarea1}
+              onChange={handleInputChange}></textarea>
                             
                         </div>
                     
@@ -144,9 +180,30 @@ function Media(){
        
         
     </form>
+    <div>
+    {submittedData && (
+        <div>
+          <h2>Submitted Data:</h2>
+          <ul>
+            {Object.entries(submittedData).map(([key, value]) => (
+              <li key={key}>
+                <strong>{key}:</strong> {value}
+              </li>
+            ))}
+          </ul>
+
+          {/* Display images */}
+          {selectedImage1 && <img className="mainIcon1Media" src={selectedImage1} alt="Selected Image 1" />}
+          {selectedImage2 && <img className="mainIcon1Media" src={selectedImage2} alt="Selected Image 2" />}
+        </div>
+      )}
+    </div>
+  
+
     </div>
 </div>
     )
 }
+
 
 export default Media
