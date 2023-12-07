@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useAuth } from "./AccountContext"
+//import { useAuth } from "./AccountContext"
 import "../AuthForm.css";
 
 
@@ -9,7 +9,7 @@ export const Login = (props) => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const navigate = useNavigate();
-    const  { login }  = useAuth();
+    //const  { login }  = useAuth();
 
     const handleSubmit = (e) => {
         // page does not reload and lose state
@@ -31,14 +31,15 @@ export const Login = (props) => {
 
         // get the results back
         .then(async response => {
-            
-            // converts to readable format
-            //const data = await response.json();
 
             if (response.status === 200) {
-                login();
+
+                // converts to readable format
+                const userData = await response.json();
+
+                props.setUser(userData);
                 console.log("hello?");
-                navigate("/Homepage");
+                navigate("Homepage");
             } else {
                 console.log(response);
                 setError("Incorrect credentials. Try again")

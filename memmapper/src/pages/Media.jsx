@@ -1,10 +1,11 @@
         import React, { useState } from 'react'
         import "../Media.css"
+        import { useNavigate } from 'react-router-dom';
 
+        const Media = (props) => {
 
-        function Media(){
+            const navigate = useNavigate();
 
-            
             const [formData, setFormData] = useState({});
 
             
@@ -25,6 +26,10 @@
                 }
                 };
             
+                const handleLogoutClick = () => {
+                    props.setUser(null);
+                };
+                
                 const handleSubmit = (e) => {
                     e.preventDefault();
                     setSubmittedData((prevData) => [...prevData, { ...formData, image1: selectedImage1, image2: selectedImage2 }]);
@@ -70,25 +75,25 @@
             return(
                 <div> 
                     <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                            <a className="navbar-brand" href="#">MemMapper</a>
+                            <a className="navbar-brand" onClick={() => navigate("/Homepage")}>MemMapper</a>
                             <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                                 <span className="navbar-toggler-icon"></span>
                             </button>
                             <div className="collapse navbar-collapse" id="navbarNav">
                                 <ul className="navbar-nav">
                                     <li className="nav-item">
-                                        <a className="nav-link" href="Homepage">Home</a>
+                                        <a className="nav-link" onClick={() => navigate("/Homepage")}>Home</a>
                                     </li>
                                     <li className="nav-item">
-                                        <a className="nav-link" href="Itinerary">Create an Plan</a>
+                                        <a className="nav-link" onClick={() => navigate("/Itinerary")}>Create an Plan</a>
                                     </li>
                                     <li className="nav-item active">
-                                        <a className="nav-link" href="Media">Media</a>
+                                        <a className="nav-link" onClick={() => navigate("/Media")}>Media</a>
                                     </li>
                                 </ul>
                                 <ul className="navbar-nav ml-auto">
                                     <li className="nav-item">
-                                        <button className="nav-link" href="#">User</button>
+                                        <button className="nav-link" onClick={handleLogoutClick}>Logout</button>
                                     </li>
                                 </ul>
                             </div>

@@ -1,14 +1,13 @@
 import React from 'react'
 import "../Homepage.css"
-import { useAuth } from './AccountContext';
+//import { useAuth } from './AccountContext';
 import { useNavigate } from 'react-router-dom';
 
-function Homepage() {
-    const { logout } = useAuth();
+export const Homepage = (props) => {
     const navigate = useNavigate();
 
     const handleLogoutClick = () => {
-        logout();  
+        props.setUser(null);
     };
 
     return(
@@ -29,8 +28,8 @@ function Homepage() {
 
     <div className="containerHomepage center">
         <nav>
-            <a className="mainIcon1Homepage" href="Itinerary">Plan a Trip</a>
-            <a className="mainIcon2Homepage" href="Media">Media</a>
+            <a className="mainIcon1Homepage" onClick={() => navigate("/Itinerary")}>Plan a Trip</a>
+            <a className="mainIcon2Homepage" onClick={() => navigate("/Media")}>Media</a>
         </nav>
     </div> 
 

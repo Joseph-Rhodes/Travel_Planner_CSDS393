@@ -1,12 +1,21 @@
-import React from "react";
-import { useAuth } from "./AccountContext";
-import { Navigate } from "react-router-dom";
+ import React from "react";
+// import { useAuth } from "./AccountContext";
+ import { Navigate, Outlet } from "react-router-dom";
 
 
-const PrivateRoutes = ({ element, ...rest }) => {
-    const { loggedIn } = useAuth();
 
-    return loggedIn ? element : <Navigate to="/" />;
-};
+// const PrivateRoutes = ({ children, ...rest }) => {
+//     const { loggedIn } = useAuth();
 
-export default PrivateRoutes;
+//     return <Route {...rest}>{loggedIn ? element : <Navigate to="/" />} </Route>;
+// };
+
+const PrivateRoute = ({ user, redirectPath = '/', children }) => {
+    if (!user) {
+      return <Navigate to={redirectPath} replace />;
+    }
+    return children ? children : <Outlet />
+  
+  };
+
+ export default PrivateRoute;

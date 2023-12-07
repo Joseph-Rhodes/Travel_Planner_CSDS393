@@ -2,11 +2,12 @@
 import "../Itinerary.css"
 import React, { useState, useEffect } from 'react';
 import jsPDF from 'jspdf'
+import { useNavigate } from "react-router-dom";
 import autoTable from 'jspdf-autotable'
 
                      
 
-function Itinerary(){
+const Itinerary = (props) => {
     
     // State to manage input values
     const [activityDate, setActivityDate] = useState('');
@@ -16,6 +17,8 @@ function Itinerary(){
     // State to manage activity table rows
     const [activityRows, setActivityRows] = useState([]);
     
+    const navigate = useNavigate();
+
     // Generates the PDF
    const generatePdf = () => {
     const doc = new jsPDF();
@@ -101,6 +104,11 @@ function Itinerary(){
         const tripEndDate = new Date(endDate);
 
         return activityDate >= tripStartDate && activityDate <= tripEndDate;
+    };
+
+    // log user out
+    const handleLogoutClick = () => {
+        props.setUser(null);
     };
 
     // Function to handle the saved values
@@ -264,25 +272,25 @@ function Itinerary(){
 
         <div style={{backgroundColor: "beige"}}>
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                <a className="navbar-brand" href="Homepage">MemMapper</a>
+                <a className="navbar-brand" onClick={() => navigate("/Homepage")}>MemMapper</a>
                 <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
         <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
                 <li className="nav-item">
-                    <a className="nav-link" href="/">Home</a>
+                    <a className="nav-link" onClick={() => navigate("/Homepage")}>Home</a>
                 </li>
                 <li className="nav-item active">
-                    <a className="nav-link" href="Itinerary">Create an Plan</a>
+                    <a className="nav-link" onClick={() => navigate("/Itinerary")}>Create an Plan</a>
                 </li>
                 <li className="nav-item">
-                    <a className="nav-link" href="Media">Media</a>
+                    <a className="nav-link" onClick={() => navigate("/Media")}>Media</a>
                 </li>
             </ul>
             <ul className="navbar-nav ml-auto">
                 <li className="nav-item">
-                    <button className="nav-link" href="#">Logout</button>
+                    <button className="nav-link" onClick={handleLogoutClick}>Logout</button>
                 </li>
             </ul>
         </div>
@@ -290,19 +298,19 @@ function Itinerary(){
         <div className="container">
             <div className="form-row">
                 <div className="form-group">
-                    <label for="destination">Destination:</label>
+                    <label htmlFor="destination">Destination:</label>
                     <input type="text" id="destination" className="form-control" placeholder="Enter your Destination..." value={destination} onChange={(e) => setDestination(e.target.value)} />
                 </div>
                 <div className="form-group">
-                    <label for="start_date">Start Date:</label>
+                    <label htmlFor="start_date">Start Date:</label>
                     <input type="date" id="start_date" className="form-control" value={startDate} onChange={(e) => setStartDate(e.target.value)} />
                 </div>
                 <div className="form-group">
-                    <label for="end_date">End Date:</label>
+                    <label htmlFor="end_date">End Date:</label>
                     <input type="date" id="end_date" className="form-control" value={endDate} onChange={(e) => setEndDate(e.target.value)} />
                 </div>
                 <div className="form-group">
-                    <label for="budget">Budget($):</label>
+                    <label htmlFor="budget">Budget($):</label>
                     <input type="number" id="budget" className="form-control" value={budget} onChange={(e) => setBudget(e.target.value)} placeholder="Enter your Budget..." />
                 </div>
                 <div className="col-md-9"></div>
@@ -345,11 +353,11 @@ function Itinerary(){
         <label>Trip Type:</label>
         <div className="radio_buttons">
             <input type="radio" id="round_trip" name="trip_type" value="round_trip" checked ={!isOneWay} onChange={handleFlightSearchFormChange}/>
-            <p for="round_trip"> Round-trip </p>
+            <p htmlFor="round_trip"> Round-trip </p>
         </div>
         <div className="radio_buttons">
             <input type="radio" id="one_way" name="trip_type" value="one_way" checked={isOneWay} onChange={handleFlightSearchFormChange}/>
-            <p for="one_way"> One-way </p>
+            <p htmlFor="one_way"> One-way </p>
         </div>
         
         {/* Departue and return dates for Flights */}
@@ -376,7 +384,7 @@ function Itinerary(){
         
         <form id="hotel_search_form">
         <h2 className="text-center">Hotel Search</h2>
-        <label for="destination">Destination:</label>
+        <label htmlFor="destination">Destination:</label>
         <input type="text" id="destination" name="destination" placeholder="Enter your Destination" required/>
         <div className="form-row">
             <div className="form-group col-md-6">
@@ -388,7 +396,7 @@ function Itinerary(){
                 <input type="date" id="checkout_date" name="checkout_date" required />
             </div>
         </div>
-        <label for="guests">Number of Guests:</label>
+        <label htmlFor="guests">Number of Guests:</label>
         <input type="number" id="guests" name="guests" min="1" placeholder="Enter the number of Guests..." required/>
         <br/>
         <input type="submit" value="Search Hotels"/>
@@ -401,22 +409,22 @@ function Itinerary(){
             <form id="activity_form">
                 <div className="form-row">
                     <div className="form-group col-md-3">
-                        <label for="activity_date">Date:</label>
+                        <label htmlFor="activity_date">Date:</label>
                         <input type="date" className="form-control" id="activity_date" value={activityDate}
                         onChange={(e) => setActivityDate(e.target.value)} required/>
                     </div>
                     <div className="form-group col-md-3">
-                        <label for="activity_time">Time:</label>
+                        <label htmlFor="activity_time">Time:</label>
                         <input type="time" className="form-control" id="activity_time" value={activityTime}
                         onChange={(e) => setActivityTime(e.target.value)} required/>
                     </div>
                     <div className="form-group col-md-3">
-                        <label for="activity_desc">Activity:</label>
+                        <label htmlFor="activity_desc">Activity:</label>
                         <input type="text" className="form-control" id="activity_desc" value={activityDesc}
                         onChange={(e) => setActivityDesc(e.target.value)} required />
                     </div>
                     <div className="form-group col-md-3">
-                        <label for="activity_cost">Cost:</label>
+                        <label htmlFor="activity_cost">Cost:</label>
                         <input type="number" className="form-control" id="activity_cost" min="0" step="1" value={activityCost}
                         onChange={(e) => setActivityCost(e.target.value)} required/>
                     </div>
