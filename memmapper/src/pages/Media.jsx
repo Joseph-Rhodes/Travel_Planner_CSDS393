@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom';
 import "../Media.css"
 
 
-function Media(){
+const Media = (props) => {
 
     
     const [formData, setFormData] = useState({});
@@ -12,6 +13,8 @@ function Media(){
         const [selectedImage2, setSelectedImage2] = useState(null);
         const [submittedData, setSubmittedData] = useState([]);
     
+        const navigate = useNavigate();
+
         const displaySelectedImage = (e, setSelectedImage) => {
         const file = e.target.files[0];
         const reader = new FileReader();
@@ -37,6 +40,10 @@ function Media(){
             setSelectedImage1(null);
             setSelectedImage2(null);
             
+        };
+
+        const handleLogoutClick = () => {
+            props.setUser(null);
         };
     
         const handleInputChange = (e) => {
@@ -76,25 +83,25 @@ function Media(){
     return(
         <div> 
             <nav className="navbar navbar-expand-lg navbar-light bg-light">
-                    <a className="navbar-brand" href="#">MemMapper</a>
+                    <a className="navbar-brand" onClick={() => navigate("/Homepage")}>MemMapper</a>
                     <button className="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                         <span className="navbar-toggler-icon"></span>
                     </button>
                     <div className="collapse navbar-collapse" id="navbarNav">
                         <ul className="navbar-nav">
                             <li className="nav-item">
-                                <a className="nav-link" href="Homepage">Home</a>
+                                <a className="nav-link" onClick={() => navigate("/Homepage")}>Home</a>
                             </li>
                             <li className="nav-item">
-                                <a className="nav-link" href="Itinerary">Create an Plan</a>
+                                <a className="nav-link" onClick={() => navigate("/Itinerary")}>Create an Plan</a>
                             </li>
                             <li className="nav-item active">
-                                <a className="nav-link" href="Media">Media</a>
+                                <a className="nav-link" onClick={() => navigate("/Media")}>Media</a>
                             </li>
                         </ul>
                         <ul className="navbar-nav ml-auto">
                             <li className="nav-item">
-                                <button className="nav-link" href="#">User</button>
+                                <button className="nav-link" onClick={(handleLogoutClick)}>Logout</button>
                             </li>
                         </ul>
                     </div>

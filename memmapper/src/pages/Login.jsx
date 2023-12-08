@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-//import { useAuth } from "./AccountContext"
 import "../AuthForm.css";
 
 
@@ -68,7 +67,7 @@ export const Login = (props) => {
                     <button type="submit">Login</button>
                     
                 </form>
-                <button className="link-btn" onClick={() => props.onFormSwitch('register')}>Don't have an account? Register here.</button>
+                <button className="link-btn" onClick={() => navigate("/Register")}>Don't have an account? Register here.</button>
             </div>
         </div>
     )

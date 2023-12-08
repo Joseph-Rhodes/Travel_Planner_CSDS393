@@ -1,10 +1,13 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export const Register = (props) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [email, setEmail] = useState('');
     const [error, setError] = useState('');
+
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         // page does not reload and lose state
@@ -59,7 +62,7 @@ export const Register = (props) => {
                     <button type="submit">Register</button>
                    
                 </form>
-                <button className="link-btn" onClick={() => props.onFormSwitch('login')}>Already have an account? Login here.</button>
+                <button className="link-btn" onClick={() => navigate("/")}>Already have an account? Login here.</button>
             </div>
         </div>
     )

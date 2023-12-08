@@ -106,7 +106,7 @@ const Itinerary = (props) => {
         return activityDate >= tripStartDate && activityDate <= tripEndDate;
     };
 
-    // log user out
+    // log user 
     const handleLogoutClick = () => {
         props.setUser(null);
     };
@@ -335,8 +335,7 @@ const Itinerary = (props) => {
         <div className="tab-pane fade show active" id="flight_search">
         <form>
         
-        <form  onSubmit={handleFlightSearch} id="flight_search_form">
-            <h2 className="text-center">Flight Search</h2>
+        <form action="https://www.expedia.com/Flights-Search?flight-type=on&mode=search&trip=roundtrip&leg1=from:Cleveland,%20OH,%20United%20States%20of%20America%20(CLE-Hopkins%20Intl.),to:Los%20Angeles,%20CA,%20United%20States%20of%20America%20(LAX-Los%20Angeles%20Intl.),departure:12/12/2023TANYT&leg2=from:Los%20Angeles,%20CA,%20United%20States%20of%20America%20(LAX-Los%20Angeles%20Intl.),to:Cleveland,%20OH,%20United%20States%20of%20America%20(CLE-Hopkins%20Intl.),departure:12/13/2023TANYT&options=cabinclass:economy&fromDate=12/12/2023&toDate=12/13/2023&d1=2023-12-12&d2=2023-12-13&passengers=adults:1,infantinlap:N" target="_blank" id="flight_search_form">            <h2 className="text-center">Flight Search</h2>
             <div className="form-row">
                 <div className="form-group col-md-6">
                     <label htmlFor="departure_city">Departure City:</label>
@@ -373,7 +372,7 @@ const Itinerary = (props) => {
         </div>
 
         {/* Search button for Flights */}
-        <input type="submit" value="Search Hotels"/>
+        <input type="submit" value="Search Flights"/>
         </form>
         
         <div id="search_results"></div>
@@ -382,8 +381,7 @@ const Itinerary = (props) => {
         <div className="tab-pane fade" id="hotel_search">
         <form>
         
-        <form id="hotel_search_form">
-        <h2 className="text-center">Hotel Search</h2>
+        <form action="https://www.hotels.com/" target="_blank" id="hotel_search_form">        <h2 className="text-center">Hotel Search</h2>
         <label htmlFor="destination">Destination:</label>
         <input type="text" id="destination" name="destination" placeholder="Enter your Destination" required/>
         <div className="form-row">
