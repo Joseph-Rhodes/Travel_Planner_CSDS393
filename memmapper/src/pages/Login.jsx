@@ -8,7 +8,6 @@ export const Login = (props) => {
     const [password, setPassword] = useState('');
     const [error, setError] = useState('');
     const navigate = useNavigate();
-    //const  { login }  = useAuth();
 
     const handleSubmit = (e) => {
         // page does not reload and lose state
@@ -37,8 +36,7 @@ export const Login = (props) => {
                 const userData = await response.json();
 
                 props.setUser(userData);
-                console.log("hello?");
-                navigate("Homepage");
+                navigate("/Homepage");
             } else {
                 console.log(response);
                 setError("Incorrect credentials. Try again")

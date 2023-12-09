@@ -1,8 +1,11 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const app = express();
 const port = 3001;
 const { pool } = require('./dbConfig');
+
 const user_model = require('./userModel');
+const media_model = require('./mediaModel');
 const session = require('express-session');
 require("dotenv").config();
 
@@ -26,6 +29,9 @@ app.use(session({
         sameSite: process.env.ENVIRONMENT === "production" ? "none" : "lax"
     },
 }));
+
+app.use(bodyParser.json({ limit: '10mb' }));
+app.use(bodyParser.urlencoded({ limit: '10mb', extended: true }));
 
 app.use(express.json());
 
@@ -97,6 +103,34 @@ app.post('/logout', (req, res) => {
       }
     });
   });
+
+  app.post('/post', (req, res) => {
+    media_model.storePost(req.body)
+
+    .then(response => {
+        res.status(200).send(response);
+    })
+
+    .catch(error => {
+        console.log(error);
+        res.status(500).send(error);
+    })
+
+  });
+  
+  app.post('/display', (req, res) => {
+    media_model.displayPost(req.body)
+
+    .then(response => {
+        res.status(200).send(response);
+    })
+
+    .catch(error => {
+        console.log(error);
+        res.status(500).send(error);
+    })
+
+  })
   
 
 app.listen(port, () => {

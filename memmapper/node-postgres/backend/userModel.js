@@ -61,7 +61,8 @@ const createUser = async (body) => {
 
                     reject(error);
                 }
-
+                
+                // if a row is returned, this means user exists
                 if (results && results.rows && results.rows.length > 0) {
                     resolve({
                         id: results.rows[0].id

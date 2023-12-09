@@ -1,6 +1,5 @@
 import React from 'react'
 import "../Homepage.css"
-//import { useAuth } from './AccountContext';
 import { useNavigate } from 'react-router-dom';
 
 export const Homepage = (props) => {

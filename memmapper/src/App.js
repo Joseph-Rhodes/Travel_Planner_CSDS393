@@ -22,9 +22,9 @@ import PrivateRoute from './pages/PrivateRoutes.jsx';
         <Route path='/' element={<Login setUser={setUser} /> } />
         <Route path='/register' element={<Register />} />
         <Route element={<PrivateRoute user={user} />} >
-          <Route path="Homepage" element={<Homepage setUser={setUser}/>} />
-          <Route path="Itinerary" element={<Itinerary setUser={setUser}/>} />
-          <Route path="Media" element={<Media setUser={setUser}/>} />
+          <Route path="Homepage" element={<Homepage setUser={setUser} user={user}/>} />
+          <Route path="Itinerary" element={<Itinerary setUser={setUser} user={user}/>} />
+          <Route path="Media" element={<Media setUser={setUser} user={user}/>} />
         </Route>
         <Route path="*" element={<p>There's nothing here: 404!</p>} />
       </Routes>
@@ -34,28 +34,5 @@ import PrivateRoute from './pages/PrivateRoutes.jsx';
     </>
   );
 };
-
-// const Navigation = () => (
-//   <nav>
-//     <Link to="/">Login</Link>
-//     <Link to="/Homepage">Homepage</Link>
-//     <Link to="/Itinerary">Itinerary</Link>
-//     <Link to="/Media">Media</Link>
-//   </nav>
-// );
-
-// const Homepage = () => {
-//   return <h2>Home (Protected: authenticated user required)</h2>;
-// };
-
-// const Media = () => {
-//   return <h2>Home (Protected: authenticated user required)</h2>;
-// };
-
-// const Itinerary = () => {
-//   return <h2>Home (Protected: authenticated user required)</h2>;
-// };
-
-
 
  export default App;
